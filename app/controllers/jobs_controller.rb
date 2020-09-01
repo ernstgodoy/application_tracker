@@ -14,13 +14,14 @@ class JobsController < ApplicationController
     if @job.save
       render json: @job
     else
-      remder json: @job.errors, status: 422
+      render json: @job.errors, status: 422
     end
   end
 
   def destroy
     @job = Job.find(params[:id])
     render json: Job.all
+  end
 
   private 
 
