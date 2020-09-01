@@ -30,17 +30,17 @@ describe "Jobs", type: :request do
     end
   end
 
-  describe "DeleteMethod", type: :request do
-    it "deletes a job" do
-      user = User.create!(email: "hi@mail.com", password: "asdasd", password_confirmation: "asdasd")
-      Job.create!(user_id: user.id, company: 'delete', title: 'SE', status: 'phase two', date_applied: '2000-10-06', last_follow_up: '2000-10-09')
-      id = Job.first.id
-      puts "first", Job.first.company
-      job1 = Job.find(id)
-      # puts "j", job1.company
-      delete job1
-      # puts "first2", Job.first.id
-    end
-  end
+  # describe "DeleteMethod", type: :request do
+  #   it "deletes a job" do
+  #     user = User.create!(email: "hi@mail.com", password: "asdasd", password_confirmation: "asdasd")
+  #     Job.create!(user_id: user.id, company: 'delete', title: 'SE', status: 'phase two', date_applied: '2000-10-06', last_follow_up: '2000-10-09')
+  #     id = Job.first.id
+  #     puts "first", Job.first.company
+  #     job1 = Job.find(id)
+  #     # puts "j", job1.company
+  #     delete job1
+  #     # puts "first2", Job.first.id
+  #   end
+  # end
 
 end
