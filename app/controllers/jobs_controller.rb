@@ -11,7 +11,7 @@ class JobsController < ApplicationController
 
   def create
     @job = Job.new(job_params)
-    if @job.save
+    if @job.valid?
       render json: @job
     else
       render json: @job.errors, status: 422
@@ -21,6 +21,16 @@ class JobsController < ApplicationController
   def destroy
     @job = Job.find(params[:id])
     render json: Job.all
+  end
+
+  def update
+    @job = Job.find(params[:id])
+    @job.update(job_params)
+    if @job.valid?
+      render json: @job
+    else
+      render json: @job.errors, status: 422
+    end
   end
 
   private 
