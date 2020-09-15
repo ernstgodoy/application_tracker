@@ -1,11 +1,11 @@
 import React from 'react';
-import { Table } from "react-bootstrap"
+import { Table, Container } from "react-bootstrap"
 
 const Tables = (props) => {
   const data = props.dummyData.map(d => d)
   return (
-    <div className="container">
-      <React.Fragment>
+    <React.Fragment>
+      <Container>
         <Table striped bordered hover>
           <thead>
             <tr>
@@ -37,8 +37,8 @@ const Tables = (props) => {
             })}
           </tbody>
         </Table>
-      </React.Fragment>
-    </div>
+      </Container>
+    </React.Fragment>
   );
 };
 

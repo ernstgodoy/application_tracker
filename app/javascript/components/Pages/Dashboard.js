@@ -2,15 +2,16 @@ import React from 'react';
 //shared
 import Tables from "../Shared/Tables"
 import dummyData from "../Shared/dummy"
+import { Container } from 'react-bootstrap';
 
 const Dashboard = () => {
   return (
-    <div className="container">
-      <React.Fragment>
-        <h1>Dashboard</h1>
+    <React.Fragment>
+      <Container>
+        <h1>Current Pending Applications</h1>
         <Tables dummyData= { dummyData } />
-      </React.Fragment>
-    </div>
+      </Container>
+    </React.Fragment>
   );
 };
 

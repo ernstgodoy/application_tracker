@@ -7,6 +7,7 @@ import Navigation from "./Shared/Navigation"
 import Dashboard from "./Pages/Dashboard"
 import Landing from "./Pages/Landing"
 import NewApplication from "./Pages/NewApplication"
+
 class App extends React.Component {
   render () {
     const { 
