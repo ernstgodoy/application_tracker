@@ -17,7 +17,7 @@ const Tables = (props) => {
             </tr>
           </thead>
           <tbody>
-            { data && data.map(d => {
+            { data && data.map((d, i) => {
               const {
                 company,
                 title,
@@ -26,7 +26,7 @@ const Tables = (props) => {
                 last_follow_up
               } = d
               return(
-                <tr>
+                <tr key={i} >
                   <td>{ company } </td>
                   <td>{ title }</td>
                   <td>{ status }</td>
