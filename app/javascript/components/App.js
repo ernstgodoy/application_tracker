@@ -17,8 +17,6 @@ class App extends React.Component {
       current_user,
       sign_up_route,
     } = this.props
-
-    console.log(current_user)
     return (
       <React.Fragment>
         <Navigation logged_in={ logged_in } sign_in_route = { sign_in_route } sign_out_route={ sign_out_route } />

@@ -2,7 +2,7 @@ import React from 'react';
 import { Table, Container } from "react-bootstrap"
 
 const Tables = (props) => {
-  const data = props.dummyData.map(d => d)
+  const data = props.data.map(d => d)
   return (
     <React.Fragment>
       <Container>
