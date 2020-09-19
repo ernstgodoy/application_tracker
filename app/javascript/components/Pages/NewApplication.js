@@ -7,7 +7,6 @@ import { Redirect } from 'react-router-dom';
 
 
 const NewApplication = (props) => {
-
   const [success, setSuccess] = useState(null)
   
   const { current_user } = props
@@ -20,8 +19,6 @@ const NewApplication = (props) => {
   const newApp = { user_id: current_user.id, company: '', title: '', status: '', date_applied: '', last_follow_up: '' }
   
   const [app, handleChange, handleSubmit] = useForm(newApp, onSubmit)
-
-  console.log(success)  
 
   return (
     <React.Fragment>
