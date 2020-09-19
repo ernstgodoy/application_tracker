@@ -3,23 +3,25 @@ import { Container, Form, Button, Row, Col } from 'react-bootstrap';
 //utils
 import useForm from '../utils/useForm';
 import { postRequest, getRequest } from '../utils/ApiCalls'
+import { Redirect } from 'react-router-dom';
 
 
 const NewApplication = (props) => {
+
+  const [success, setSuccess] = useState(null)
   
   const { current_user } = props
   
   const onSubmit = () => {
     postRequest(app)
-    .then((resp) => {
-      console.log(resp)
-    })
+    setSuccess(true)
   }
   
   const newApp = { user_id: current_user.id, company: '', title: '', status: '', date_applied: '', last_follow_up: '' }
   
   const [app, handleChange, handleSubmit] = useForm(newApp, onSubmit)
-  
+
+  console.log(success)  
 
   return (
     <React.Fragment>
@@ -78,6 +80,9 @@ const NewApplication = (props) => {
               Submit
             </Button>
         </Form>
+        { success && 
+          <Redirect to='/dash' />
+        }
       </Container>
     </React.Fragment>
   );
