@@ -10,7 +10,7 @@ class JobsController < ApplicationController
   end
 
   def create
-    @job = Job.new(job_params)
+    @job = Job.create(job_params)
     if @job.valid?
       render json: @job
     else

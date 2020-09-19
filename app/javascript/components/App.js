@@ -24,7 +24,7 @@ class App extends React.Component {
           <Switch>
             <Route exact path="/" component={ Landing }/>
             <Route path="/dash" component= { Dashboard }/>
-            <Route path="/new" component={ NewApplication }/>
+            <Route path="/new" render={(props) => <NewApplication {...props} current_user={ current_user }/> } />
           </Switch>
         </Router>
       </React.Fragment>

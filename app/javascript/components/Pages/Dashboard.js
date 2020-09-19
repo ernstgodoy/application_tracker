@@ -2,13 +2,17 @@ import React, { useState, useEffect } from 'react';
 import { Container } from 'react-bootstrap';
 //shared
 import Tables from "../Shared/Tables"
-import getRequest from "../Shared/ApiCalls"
+import { getRequest } from "../utils/ApiCalls"
 
 const Dashboard = () => {
+
   const [data, setData] = useState([])
+  
   useEffect(() => {
-    getRequest(setData)
+    getRequest()
+    .then(resp => setData(resp))
   }, [])
+  
   return (
     <React.Fragment>
       <Container>
