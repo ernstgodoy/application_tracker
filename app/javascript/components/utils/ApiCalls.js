@@ -8,8 +8,6 @@ export const getRequest = () => {
   )
 }
 
-
-
 export const postRequest = (app) => {
   return(
     fetch(`/jobs`, {
@@ -24,3 +22,15 @@ export const postRequest = (app) => {
   )
 }
 
+export const putRequest = (id) => {
+  return(
+    fetch(`/jobs/${id}`, {
+      headers: { 'Content-Type': 'application/json' },
+      method: "PUT"
+    })
+    .then((response) => {
+      let json = response.json()
+      return json
+    })
+  )
+}
