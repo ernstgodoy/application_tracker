@@ -7,6 +7,7 @@ import Navigation from "./Shared/Navigation"
 import Dashboard from "./Pages/Dashboard"
 import Landing from "./Pages/Landing"
 import NewApplication from "./Pages/NewApplication"
+import EditApplication from "./Pages/EditApplication"
 
 class App extends React.Component {
   render () {
@@ -25,6 +26,8 @@ class App extends React.Component {
             <Route exact path="/" component={ Landing }/>
             <Route path="/dash" component= { Dashboard }/>
             <Route path="/new" render={(props) => <NewApplication {...props} current_user={ current_user }/> } />
+            <Route path="/edit/:id" component= { EditApplication }/>
+
           </Switch>
         </Router>
       </React.Fragment>
