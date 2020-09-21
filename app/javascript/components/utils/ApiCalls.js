@@ -24,3 +24,11 @@ export const postRequest = (app) => {
   )
 }
 
+export const deleteRequest = (id) => {
+  return(
+    fetch(`/jobs/${id}`, {
+      method: 'DELETE',
+    })
+  )
+}
+
