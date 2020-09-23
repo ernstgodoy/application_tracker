@@ -8,6 +8,7 @@ import Dashboard from "./Pages/Dashboard"
 import Landing from "./Pages/Landing"
 import NewApplication from "./Pages/NewApplication"
 import EditApplication from "./Pages/EditApplication"
+import DeleteApplication from "./Pages/DeleteApplication"
 
 class App extends React.Component {
   render () {
@@ -20,14 +21,14 @@ class App extends React.Component {
     } = this.props
     return (
       <React.Fragment>
-        <Navigation logged_in={ logged_in } sign_in_route = { sign_in_route } sign_out_route={ sign_out_route } />
+        <Navigation logged_in={ logged_in } sign_in_route = { sign_in_route } sign_out_route={ sign_out_route }/>
         <Router>
           <Switch>
             <Route exact path="/" component={ Landing }/>
-            <Route path="/dash" component= { Dashboard }/>
-            <Route path="/new" render={(props) => <NewApplication {...props} current_user={ current_user }/> } />
-            <Route path="/edit/:id" component= { EditApplication }/>
-
+            <Route path="/dash" component={ Dashboard }/>
+            <Route path="/new" render={(props) => <NewApplication {...props} current_user={ current_user }/> }/>
+            <Route path="/edit/:id" component={ EditApplication }/>
+            <Route path="/delete/:id" component={ DeleteApplication }/>
           </Switch>
         </Router>
       </React.Fragment>

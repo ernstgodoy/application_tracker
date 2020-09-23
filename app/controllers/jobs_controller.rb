@@ -19,7 +19,7 @@ class JobsController < ApplicationController
   end
 
   def destroy
-    @job = Job.find(params[:id])
+    Job.destroy(params[:id])
     render json: Job.all
   end
 
