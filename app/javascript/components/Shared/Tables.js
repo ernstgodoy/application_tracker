@@ -1,14 +1,11 @@
-import { faEdit, faTrash } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
 import { Table, Container, Button } from "react-bootstrap"
+//icons
+import { faEdit, faTrash } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const Tables = (props) => {
   const data = props.data.map(d => d)
-
-  const handleDelete = () => {
-    console.log("delete button")
-  }
 
   return (
     <React.Fragment>
@@ -43,7 +40,8 @@ const Tables = (props) => {
                   <td>{ last_follow_up }</td>
                   <td>
                     <Button href={`/edit/${id}`} variant="success" size="sm"><FontAwesomeIcon icon={faEdit} size="xs" /></Button>
-                    <Button onClick={ handleDelete } size="sm"><FontAwesomeIcon icon={faTrash} size="xs" /></Button>
+                    &nbsp;
+                    <Button href={ `/delete/${id}` } size="sm"><FontAwesomeIcon icon={faTrash} size="xs" /></Button>
                   </td>
                 </tr>
               )

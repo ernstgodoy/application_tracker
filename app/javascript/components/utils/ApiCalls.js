@@ -8,6 +8,16 @@ export const getRequest = () => {
   )
 }
 
+export const getByIdRequest = (id) => {
+  return(
+    fetch(`/jobs/${id}`)
+    .then((response) => {
+      let json = response.json()
+      return json
+    })
+  )
+}
+
 export const postRequest = (app) => {
   return(
     fetch(`/jobs`, {
@@ -18,6 +28,14 @@ export const postRequest = (app) => {
     .then(response => {
       let json = response.json()
       return json
+    })
+  )
+}
+
+export function deleteRequest(id) {
+  return(
+    fetch(`/jobs/${id}`, {
+      method: 'DELETE'
     })
   )
 }
