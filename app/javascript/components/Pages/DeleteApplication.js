@@ -48,7 +48,7 @@ const DeleteApplication = (props) => {
         </Table>
         <Button onClick={ handleDelete }>Yes</Button>
         &nbsp;
-        <Button href={ `/dash` }>Cancel</Button>
+        <Button href={ `/dash` } variant="warning">Cancel</Button>
         </>
         }
         { success &&
