@@ -19,17 +19,18 @@ class App extends React.Component {
       sign_out_route,
       current_user,
       sign_up_route,
+      csrf_token
     } = this.props
     return (
       <React.Fragment>
         <Navigation logged_in={ logged_in } sign_in_route = { sign_in_route } sign_out_route={ sign_out_route }/>
         <Router>
           <Switch>
-            <Route exact path="/" render={(props) => <Landing {...props} logged_in={ logged_in } sign_up_route={ sign_up_route } /> }/>
+            <Route exact path="/" render={(props) => <Landing {...props} logged_in={ logged_in } sign_up_route={ sign_up_route }/> }/>
             <Route path="/dash" component={ Dashboard }/>
-            <Route path="/new" render={(props) => <NewApplication {...props} current_user={ current_user }/> }/>
-            <Route path="/edit/:id" component={ EditApplication }/>
-            <Route path="/delete/:id" component={ DeleteApplication }/>
+            <Route path="/new" render={(props) => <NewApplication {...props} current_user={ current_user } csrf_token={ csrf_token }/> }/>
+            <Route path="/edit/:id" render={(props) => <EditApplication {...props} csrf_token={ csrf_token }/> }/>
+            <Route path="/delete/:id" render= {(props) => <DeleteApplication {...props} csrf_token={ csrf_token }/> }/>
             <Route path="/about" component={ About }/>
           </Switch>
         </Router>

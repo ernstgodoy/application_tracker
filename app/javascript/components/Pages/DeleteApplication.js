@@ -7,6 +7,7 @@ import { getByIdRequest, deleteRequest } from '../utils/ApiCalls'
 
 const DeleteApplication = (props) => {
   const id = props.match.params.id
+  const { csrf_token } = props
   const [data, setData] = useState({})
   const [success, setSuccess] = useState(null)
 
@@ -16,7 +17,7 @@ const DeleteApplication = (props) => {
   }, [])
 
   const handleDelete = () => {
-    deleteRequest(id)
+    deleteRequest(id, csrf_token)
     setSuccess(true)
   }
 

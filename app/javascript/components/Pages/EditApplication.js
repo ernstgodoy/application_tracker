@@ -3,38 +3,52 @@ import { Container, Form, Button, Row, Col } from 'react-bootstrap';
 import { Redirect } from 'react-router-dom';
 //utils
 import useForm from '../utils/useForm'
-import { getRequest, putRequest } from '../utils/ApiCalls'
+import { getByIdRequest, getRequest, putRequest } from '../utils/ApiCalls'
 
 const EditApplication = (props) => {
+  const id = props.match.params.id
+  const { csrf_token } = props
   const [data, setData] = useState({})
   const [cancel, isCanceled] = useState(null)
   const [success, setSuccess] = useState(null)
-  const [values, handleChange, handleSubmit] = useForm()
-
-  const id = props.match.params.id
+  const [isLoaded, setIsLoaded] = useState(false)
 
   useEffect(() => {
-    getRequest()
-    .then(data => {
-      let app = data.find(app => app.id === parseInt(id))
-      setData(app)
-    })
+    getData()
   }, [])
 
-  const handleEdit = () => {
-    console.log("edit")
+  const getData = () => {
+    getByIdRequest(id)
+    .then(data =>  {
+      setData(data)
+      setIsLoaded(true)
+    })
   }
+
+  const onEdit = (e) => {
+    e.preventDefault()
+    console.log(csrf_token)
+    putRequest(id, data, csrf_token)
+    setSuccess(true)
+  }
+
+  const handleChange = (e) => {
+    setData({...data, [e.target.name]: e.target.value})
+  }
+
+  // const [app, handleChange, handleSubmit] = useForm(data, onEdit)
 
   return (
     <React.Fragment>
       <Container>
         <h1>Edit Application</h1>
-          <Form className="add-new-form" onSubmit={ handleSubmit } >
+        { isLoaded && 
+          <Form className="add-new-form" onSubmit={ onEdit } >
             <Row>
               <Col md={6}>
                 <Form.Group controlId="companyName">
                   <Form.Label>Company Name</Form.Label>
-                  <Form.Control name="company" type="text" value={ data.company || '' } onChange={ handleChange } placeholder="Enter Company Name" />
+                  <Form.Control name="company" type="text" value={ data.company || "" } onChange={ handleChange } placeholder="Enter Company Name" />
                 </Form.Group>
               </Col>
               <Col md={6}>
@@ -86,6 +100,7 @@ const EditApplication = (props) => {
                 Apply Edits
               </Button>
           </Form>
+        }
         { (success || cancel) && 
           <Redirect to='/dash' />
         }
