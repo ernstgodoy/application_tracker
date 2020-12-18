@@ -4,20 +4,12 @@ import { Container } from 'react-bootstrap';
 import Tables from "../Shared/Tables"
 import { getRequest } from "../utils/ApiCalls"
 
-const Dashboard = () => {
-
-  const [data, setData] = useState([])
-  
-  useEffect(() => {
-    getRequest()
-    .then(resp => setData(resp))
-  }, [])
-  
+const Dashboard = () => {  
   return (
     <React.Fragment>
       <Container>
         <h1>Current Pending Applications</h1>
-        <Tables data={ data } />
+        <Tables/>
       </Container>
     </React.Fragment>
   );

@@ -1,11 +1,28 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Table, Container, Button } from "react-bootstrap"
 //icons
 import { faEdit, faTrash } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+//utils
+import { getRequest } from '../utils/ApiCalls'
 
-const Tables = (props) => {
-  const data = props.data.map(d => d)
+
+const Tables = () => {
+  const [data, setData] = useState([])
+  const [isLoaded, setIsLoaded] = useState(false)
+  
+  useEffect(() => {
+    let mounted = true
+    getRequest()
+    .then((resp) => {
+      if (mounted) {
+        console.log(resp)
+        setData(resp) 
+        setIsLoaded(true)
+      }
+    })
+    return () => mounted = false 
+  }, [])
 
   return (
     <React.Fragment>
@@ -22,7 +39,7 @@ const Tables = (props) => {
             </tr>
           </thead>
           <tbody>
-            { data && data.map((d, i) => {
+            { isLoaded && data.map((d, i) => {
               const {
                 id,
                 company,
@@ -48,6 +65,9 @@ const Tables = (props) => {
             })}
           </tbody>
         </Table>
+        {(isLoaded && data.length === 0) && 
+          <h3>No Applications To Track</h3>
+        }
       </Container>
     </React.Fragment>
   );

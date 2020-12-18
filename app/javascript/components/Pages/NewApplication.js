@@ -1,22 +1,23 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { Container, Form, Button, Row, Col } from 'react-bootstrap';
 //utils
 import useForm from '../utils/useForm';
-import { postRequest, getRequest } from '../utils/ApiCalls'
+import { postRequest } from '../utils/ApiCalls'
 import { Redirect } from 'react-router-dom';
 
 
 const NewApplication = (props) => {
   const [success, setSuccess] = useState(null)
-  
-  const { current_user } = props
+  const { 
+    current_user,
+    csrf_token
+  } = props
+  const newApp = { user_id: current_user.id, company: '', title: '', status: '', date_applied: '', last_follow_up: '' }
   
   const onSubmit = () => {
-    postRequest(app)
+    postRequest(app, csrf_token)
     setSuccess(true)
   }
-  
-  const newApp = { user_id: current_user.id, company: '', title: '', status: '', date_applied: '', last_follow_up: '' }
   
   const [app, handleChange, handleSubmit] = useForm(newApp, onSubmit)
 
@@ -69,6 +70,7 @@ const NewApplication = (props) => {
                   <option>Phone Interview</option>
                   <option>Onsite</option>
                   <option>Not Hired</option>
+                  <option>Hired</option>
                 </Form.Control>
               </Form.Group>
             </Col>

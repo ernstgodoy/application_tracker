@@ -1,0 +1,2 @@
+2020-12-01 14:53:14.244 PST [40114] FATAL:  database files are incompatible with server
+2020-12-01 14:53:14.244 PST [40114] DETAIL:  The data directory was initialized by PostgreSQL version 12, which is not compatible with this version 13.1.

@@ -1,54 +1,48 @@
 export const getRequest = () => {
-  return(
-    fetch(`/jobs`)
-    .then((response) => {
-      let json = response.json()
-      return json
-    })
-  )
+  return fetch(`/jobs`, {
+    method: "GET"
+  })
+    .then(response => response.json())
 }
 
 export const getByIdRequest = (id) => {
-  return(
-    fetch(`/jobs/${id}`)
-    .then((response) => {
-      let json = response.json()
-      return json
-    })
-  )
+  return fetch(`/jobs/${id}`, {
+    method: "GET"
+  })
+    .then(response => response.json())
 }
 
-export const postRequest = (app) => {
-  return(
-    fetch(`/jobs`, {
+export const postRequest = (app, token) => {
+  return fetch(`/jobs`, {
       body: JSON.stringify(app),
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' }
+      headers: { 
+        'Content-Type': 'application/json',
+        'X-CSRF-TOKEN': token
+      }
     })
-    .then(response => {
-      let json = response.json()
-      return json
-    })
-  )
+    .then(response => response.json())
 }
 
-export function deleteRequest(id) {
-  return(
-    fetch(`/jobs/${id}`, {
-      method: 'DELETE'
+export const deleteRequest = (id, token) => {
+  return fetch(`/jobs/${id}`, {
+      method: 'DELETE',
+      headers: {
+        'Content-type': 'application/json',
+        'X-CSRF-TOKEN': token
+      }
     })
-  )
+    .then(response => response.json())
 }
 
-export const putRequest = (id) => {
-  return(
-    fetch(`/jobs/${id}`, {
-      headers: { 'Content-Type': 'application/json' },
-      method: "PUT"
+export const putRequest = (id, app, token) => {
+  return fetch(`/jobs/${id}`, {
+      body: JSON.stringify(app),
+      method: "PUT",
+      headers: { 
+        'Content-Type': 'application/json',
+        'X-CSRF-TOKEN': token
+      },
     })
-    .then((response) => {
-      let json = response.json()
-      return json
-    })
-  )
+    .then(response => response.json())
 }
