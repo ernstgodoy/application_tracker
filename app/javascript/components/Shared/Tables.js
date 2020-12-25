@@ -14,8 +14,8 @@ const Tables = () => {
   useEffect(() => {
     getData()
   }, [])
-
-  getData = () => {
+  
+  const getData = () => {
     let mounted = true
     getRequest()
     .then((resp) => {
