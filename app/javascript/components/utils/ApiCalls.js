@@ -2,14 +2,14 @@ export const getRequest = () => {
   return fetch(`/jobs`, {
     method: "GET"
   })
-    .then(response => response.json())
+  .then(response => response.json())
 }
 
 export const getByIdRequest = (id) => {
   return fetch(`/jobs/${id}`, {
     method: "GET"
   })
-    .then(response => response.json())
+  .then(response => response.json())
 }
 
 export const postRequest = (app, token) => {

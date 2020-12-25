@@ -12,6 +12,10 @@ const Tables = () => {
   const [isLoaded, setIsLoaded] = useState(false)
   
   useEffect(() => {
+    getData()
+  }, [])
+
+  getData = () => {
     let mounted = true
     getRequest()
     .then((resp) => {
@@ -22,7 +26,7 @@ const Tables = () => {
       }
     })
     return () => mounted = false 
-  }, [])
+  }
 
   return (
     <React.Fragment>
