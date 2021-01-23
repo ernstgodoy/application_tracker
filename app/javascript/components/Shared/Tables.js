@@ -20,7 +20,6 @@ const Tables = () => {
     getRequest()
     .then((resp) => {
       if (mounted) {
-        console.log(resp)
         setData(resp) 
         setIsLoaded(true)
       }

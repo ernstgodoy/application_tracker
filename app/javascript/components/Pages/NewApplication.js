@@ -16,7 +16,11 @@ const NewApplication = (props) => {
   
   const onSubmit = () => {
     postRequest(app, csrf_token)
-    setSuccess(true)
+      .then(res => {
+        if (res) {
+          setSuccess(true)
+        }
+      })
   }
   
   const [app, handleChange, handleSubmit] = useForm(newApp, onSubmit)

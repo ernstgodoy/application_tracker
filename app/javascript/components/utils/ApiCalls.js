@@ -21,7 +21,11 @@ export const postRequest = (app, token) => {
         'X-CSRF-TOKEN': token
       }
     })
-    .then(response => response.json())
+    .then(response => {
+      if (response.ok) {
+        return true
+      }
+    })
 }
 
 export const deleteRequest = (id, token) => {
@@ -32,7 +36,11 @@ export const deleteRequest = (id, token) => {
         'X-CSRF-TOKEN': token
       }
     })
-    .then(response => response.json())
+    .then(response => {
+      if (response.ok) {
+        return true
+      }
+    })
 }
 
 export const putRequest = (id, app, token) => {
