@@ -59,9 +59,9 @@ const Tables = () => {
                   <td>{ date_applied }</td>
                   <td>{ last_follow_up }</td>
                   <td>
-                    <Button href={`/edit/${id}`} variant="success" size="sm"><FontAwesomeIcon icon={faEdit} size="xs" /></Button>
+                    <Button href={`/edit-application/${id}`} variant="success" size="sm"><FontAwesomeIcon icon={faEdit} size="xs" /></Button>
                     &nbsp;
-                    <Button href={ `/delete/${id}` } size="sm"><FontAwesomeIcon icon={faTrash} size="xs" /></Button>
+                    <Button href={ `/delete-application/${id}` } size="sm"><FontAwesomeIcon icon={faTrash} size="xs" /></Button>
                   </td>
                 </tr>
               )
