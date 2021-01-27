@@ -16,8 +16,8 @@ const Navigation = (props) => {
           { logged_in &&
             <>
             <Nav className="mr-auto">
-              <Nav.Link href="/dash">Home</Nav.Link>
-              <Nav.Link href="/new">Track New Applicaon</Nav.Link>
+              <Nav.Link href="/dashboard">Home</Nav.Link>
+              <Nav.Link href="/new-application">Track New Application</Nav.Link>
               <Nav.Link href="/about">About</Nav.Link>
             </Nav>
             <Button href={ sign_out_route } variant="warning">

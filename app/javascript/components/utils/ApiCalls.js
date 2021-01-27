@@ -2,14 +2,14 @@ export const getRequest = () => {
   return fetch(`/jobs`, {
     method: "GET"
   })
-    .then(response => response.json())
+  .then(response => response.json())
 }
 
 export const getByIdRequest = (id) => {
   return fetch(`/jobs/${id}`, {
     method: "GET"
   })
-    .then(response => response.json())
+  .then(response => response.json())
 }
 
 export const postRequest = (app, token) => {
@@ -21,7 +21,7 @@ export const postRequest = (app, token) => {
         'X-CSRF-TOKEN': token
       }
     })
-    .then(response => response.json())
+    .then(response => response)
 }
 
 export const deleteRequest = (id, token) => {
@@ -32,7 +32,7 @@ export const deleteRequest = (id, token) => {
         'X-CSRF-TOKEN': token
       }
     })
-    .then(response => response.json())
+    .then(response => response)
 }
 
 export const putRequest = (id, app, token) => {
@@ -44,5 +44,5 @@ export const putRequest = (id, app, token) => {
         'X-CSRF-TOKEN': token
       },
     })
-    .then(response => response.json())
+    .then(response => response)
 }
