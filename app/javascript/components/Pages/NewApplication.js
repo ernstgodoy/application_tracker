@@ -17,7 +17,7 @@ const NewApplication = (props) => {
   const onSubmit = () => {
     postRequest(app, csrf_token)
       .then(res => {
-        if (res) {
+        if (res.ok) {
           setSuccess(true)
         }
       })

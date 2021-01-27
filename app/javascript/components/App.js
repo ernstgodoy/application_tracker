@@ -27,10 +27,10 @@ class App extends React.Component {
         <Router>
           <Switch>
             <Route exact path="/" render={(props) => <Landing {...props} logged_in={ logged_in } sign_up_route={ sign_up_route }/> }/>
-            <Route path="/dash" component={ Dashboard }/>
-            <Route path="/new" render={(props) => <NewApplication {...props} current_user={ current_user } csrf_token={ csrf_token }/> }/>
-            <Route path="/edit/:id" render={(props) => <EditApplication {...props} csrf_token={ csrf_token }/> }/>
-            <Route path="/delete/:id" render= {(props) => <DeleteApplication {...props} csrf_token={ csrf_token }/> }/>
+            <Route path="/dashboard" component={ Dashboard }/>
+            <Route path="/new-application" render={(props) => <NewApplication {...props} current_user={ current_user } csrf_token={ csrf_token }/> }/>
+            <Route path="/edit-application/:id" render={(props) => <EditApplication {...props} csrf_token={ csrf_token }/> }/>
+            <Route path="/delete-application/:id" render= {(props) => <DeleteApplication {...props} csrf_token={ csrf_token }/> }/>
             <Route path="/about" component={ About }/>
           </Switch>
         </Router>

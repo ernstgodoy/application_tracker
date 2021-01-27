@@ -2,8 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Container, Form, Button, Row, Col } from 'react-bootstrap';
 import { Redirect } from 'react-router-dom';
 //utils
-import useForm from '../utils/useForm'
-import { getByIdRequest, getRequest, putRequest } from '../utils/ApiCalls'
+import { getByIdRequest, putRequest } from '../utils/ApiCalls'
 
 const EditApplication = (props) => {
   const id = props.match.params.id
@@ -27,16 +26,17 @@ const EditApplication = (props) => {
 
   const onEdit = (e) => {
     e.preventDefault()
-    console.log(csrf_token)
     putRequest(id, data, csrf_token)
-    setSuccess(true)
+    .then(res => {
+      if (res.ok) {
+        setSuccess(true)
+      }
+    })
   }
 
   const handleChange = (e) => {
     setData({...data, [e.target.name]: e.target.value})
   }
-
-  // const [app, handleChange, handleSubmit] = useForm(data, onEdit)
 
   return (
     <React.Fragment>

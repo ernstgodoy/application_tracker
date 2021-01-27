@@ -19,7 +19,7 @@ const DeleteApplication = (props) => {
   const handleDelete = () => {
     deleteRequest(id, csrf_token)
       .then(res => {
-        if (res) {
+        if (res.ok) {
           setSuccess(true)
         }
       })
