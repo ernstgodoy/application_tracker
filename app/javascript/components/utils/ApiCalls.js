@@ -1,5 +1,9 @@
-export const getRequest = () => {
-  return fetch(`/jobs`, {
+export const getRequest = (role) => {
+  let url = `/jobs`
+  if (role) {
+    url += `?role=${role}`
+  }
+  return fetch(url, {
     method: "GET"
   })
   .then(response => response.json())
@@ -45,4 +49,9 @@ export const putRequest = (id, app, token) => {
       },
     })
     .then(response => response)
+}
+
+export const getRoles = () => {
+  return fetch(`/roles`)
+    .then( res => res.json())
 }

@@ -65,13 +65,13 @@ const NewApplication = (props) => {
                 <Form.Label>Application Status</Form.Label>
                 <Form.Control name="status" value={ app.status } onChange={ handleChange } as="select">
                   <option disabled value="">Select</option>
-                  <option>Just Applied</option>
+                  <option>Submitted Application</option>
+                  <option>Initial Phone Screening</option>
+                  <option>Phone Interview</option>
                   <option>Assessment</option>
                   <option>Phase 1</option>
                   <option>Phase 2</option>
                   <option>Phase 3</option>
-                  <option>Initial Phone Screening</option>
-                  <option>Phone Interview</option>
                   <option>Onsite</option>
                   <option>Not Hired</option>
                   <option>Hired</option>
@@ -84,7 +84,7 @@ const NewApplication = (props) => {
             </Button>
         </Form>
         { success && 
-          <Redirect to='/dash' />
+          <Redirect to='/dashboard' />
         }
       </Container>
     </React.Fragment>

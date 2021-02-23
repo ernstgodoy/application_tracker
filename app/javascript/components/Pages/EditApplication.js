@@ -102,7 +102,7 @@ const EditApplication = (props) => {
           </Form>
         }
         { (success || cancel) && 
-          <Redirect to='/dash' />
+          <Redirect to='/dashboard' />
         }
       </Container>
     </React.Fragment>

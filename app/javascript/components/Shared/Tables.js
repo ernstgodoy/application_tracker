@@ -1,35 +1,68 @@
 import React, { useState, useEffect } from 'react';
-import { Table, Container, Button } from "react-bootstrap"
+import { Table, Container, Button, Form } from "react-bootstrap"
 //icons
 import { faEdit, faTrash } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 //utils
-import { getRequest } from '../utils/ApiCalls'
+import { getRequest, getRoles } from '../utils/ApiCalls'
 
 
 const Tables = () => {
   const [data, setData] = useState([])
   const [isLoaded, setIsLoaded] = useState(false)
+  const [role, setRole] = useState(null)
+  const [roles, setRoles] = useState([])
   
   useEffect(() => {
     getData()
-  }, [])
+  }, [role])
+
+  const rolesFormat = (arg) => {
+    console.log(arg)
+    let roles = new Array
+    arg.map(r => roles.push({value: r.toLowerCase(), view: titleCase(r)}))
+    console.log(roles)
+    return roles
+  }
+
+  const titleCase = (str) => {
+    let titleized = str.split(' ')
+    titleized = titleized.map(s => s.charAt(0).toUpperCase() + s.substr(1).toLowerCase()).join(' ')
+    return titleized
+  }
   
   const getData = () => {
     let mounted = true
-    getRequest()
+    getRequest(role)
     .then((resp) => {
       if (mounted) {
         setData(resp) 
-        setIsLoaded(true)
       }
     })
+
+    getRoles()
+    .then(res => {
+      setRoles(rolesFormat(res))
+      setIsLoaded(true)
+    })
     return () => mounted = false 
+  }
+
+  const roleFilter = (e) => {
+    e.persist()
+    setRole(e.target.value)
   }
 
   return (
     <React.Fragment>
       <Container>
+        <Form.Group controlId="role">
+          <Form.Control onChange={roleFilter} as="select">
+          { roles.map((r, i) => {
+            return <option key={i} value={r.value}> {r.view} </option>
+          })}
+          </Form.Control>
+        </Form.Group>
         <Table hover responsive>
           <thead>
             <tr>
