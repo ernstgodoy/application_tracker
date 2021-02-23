@@ -2,8 +2,13 @@ class JobsController < ApplicationController
   
   def index 
     if params[:role] 
-      @jobs = Job.select { |obj| obj.title == params[:role] }
-      render json: @jobs
+      if params[:role] == 'all'
+        @jobs = Job.all 
+        render json: @jobs
+      else
+        @jobs = Job.select { |obj| obj.title.downcase == params[:role] }
+        render json: @jobs
+      end
     else
       @jobs = Job.all 
       render json: @jobs

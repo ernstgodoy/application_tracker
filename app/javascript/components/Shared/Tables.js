@@ -18,19 +18,12 @@ const Tables = () => {
   }, [role])
 
   const rolesFormat = (arg) => {
-    console.log(arg)
-    let roles = new Array
-    arg.map(r => roles.push({value: r.toLowerCase(), view: titleCase(r)}))
+    let roles = new Array({value: 'all', view: 'All'})
+    arg.map(r => roles.push({value: r.toLowerCase(), view: r }))
     console.log(roles)
     return roles
   }
 
-  const titleCase = (str) => {
-    let titleized = str.split(' ')
-    titleized = titleized.map(s => s.charAt(0).toUpperCase() + s.substr(1).toLowerCase()).join(' ')
-    return titleized
-  }
-  
   const getData = () => {
     let mounted = true
     getRequest(role)
@@ -101,7 +94,7 @@ const Tables = () => {
             })}
           </tbody>
         </Table>
-        {(isLoaded && data.length === 0) && 
+        { isLoaded && (data.length === 0) && 
           <h3>No Applications To Track</h3>
         }
       </Container>
