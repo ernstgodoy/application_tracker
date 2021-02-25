@@ -1,5 +1,4 @@
 import React from 'react';
-import { Container, Image, Row, Col, Button } from 'react-bootstrap';
 import svg from '../../../assets/images/working.svg'
 
 const Landing = (props) => {
@@ -10,20 +9,20 @@ const Landing = (props) => {
   return (
     <React.Fragment>
       <div className="landing-page">
-        <Container className="landing-inner">
-          <Row className="landing-content">
-            <Col sm={6}>
-              <Image src={svg} fluid/>
-            </Col>
-            <Col sm={6} >
-              <h1> Simplify your job search.</h1>
-              <h5>Ditch the excel sheets and create your free account to begin tracking your job applications.</h5>
+        <div className="landing-container">
+          <div className="landing-content">
+            <img src={svg}/>
+          </div>
+          <div className="landing-content">
+            <h1>Simplify tracking your job search. <span>Ditch the excel sheets and create your free account to begin tracking your job applications.</span></h1>
               {!logged_in && 
-                <Button href={ sign_up_route } variant="warning">Sign Up</Button>
+                <a href={ sign_up_route } variant="warning">Get Started</a>
               }
-            </Col>
-          </Row>
-        </Container>
+              {logged_in && 
+                <a href='/dashboard' variant="warning">Go To Dashboard</a>
+              }
+          </div>
+        </div>
       </div>
     </React.Fragment>
   );
