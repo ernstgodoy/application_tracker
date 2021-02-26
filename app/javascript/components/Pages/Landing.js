@@ -16,10 +16,10 @@ const Landing = (props) => {
           <div className="landing-content">
             <h1>Simplify tracking your job search. <span>Ditch the excel sheets and create your free account to begin tracking your job applications.</span></h1>
               {!logged_in && 
-                <a href={ sign_up_route } variant="warning">Get Started</a>
+                <a className="button" href={ sign_up_route }>Get Started</a>
               }
               {logged_in && 
-                <a href='/dashboard' variant="warning">Go To Dashboard</a>
+                <a className="button" href='/dashboard'>Go To Dashboard</a>
               }
           </div>
         </div>
