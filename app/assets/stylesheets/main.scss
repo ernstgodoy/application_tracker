@@ -19,36 +19,59 @@ h1, h3 {
 .landing-page {
   width: 100%;
   height: 90vh;
+  display: flex;
 }
 
 .landing-page h1 {
-  font-family: 'Merriweather', serif;
-  font-weight: 900;
-  font-size: 48px;
+  text-align: left;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+  font-size: 4vmax;
 }
 
-.landing-page .container {
+h1 span {
+  color: #8b8b8b;
+  font-weight: 100;
+}
+
+.landing-container {
+  width: 100%;
+  padding: 40px;
+  display: flex;
   margin: auto;
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  height: 85vh;
+  align-self: center;
 }
 
-.landing-inner {
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
+.landing-content {
+  width: 50%;
+  text-align: center;
+  margin: auto;
 }
 
-.landing-content { 
-  margin: 0 auto !important;
+.landing-content img{
+  max-width: 100%;
+  max-height: 100%;
 }
 
-h1 {
-  font-size: 40px;
+.button {
+  text-align: center;
+  background-color: #6C63FF;
+  margin: 30px auto;
+  color: white;
+  text-decoration: none !important;
+  padding: 10px 20px;
+  border-radius: 25px 25px 25px 25px;
+  display: block;
+  width: 150px;
 }
 
-.landing-content .btn {
-  float: right;
+.nav-btn{
+  margin: 0;
+  width: auto;
+}
+
+.button:hover {
+  opacity: .8;
+  text-decoration: none !important;
+  color: white;
 }
