@@ -49,8 +49,9 @@ const Tables = () => {
   return (
     <React.Fragment>
       <Container>
+        <Form.Label>Role</Form.Label>
         <Form.Group controlId="role">
-          <Form.Control onChange={roleFilter} as="select">
+          <Form.Control className="select" onChange={roleFilter} as="select">
           { roles.map((r, i) => {
             return <option key={i} value={r.value}> {r.view} </option>
           })}
