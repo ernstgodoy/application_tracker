@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { Container, Form, Button, Row, Col } from 'react-bootstrap';
 //utils
-import useForm from '../utils/useForm';
-import { postRequest } from '../utils/ApiCalls'
+import useForm from '../../utils/useForm';
+import { postRequest } from '../../utils/ApiCalls'
 import { Redirect } from 'react-router-dom';
 
 

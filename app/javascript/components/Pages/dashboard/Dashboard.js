@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Container } from 'react-bootstrap';
 //shared
-import Tables from "../Shared/Tables"
-import { getRequest } from "../utils/ApiCalls"
+import Tables from "./application-table/Tables"
+import { getRequest } from "../../utils/ApiCalls"
 
 const Dashboard = () => {  
   return (
