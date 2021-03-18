@@ -8,27 +8,21 @@ class NewDash extends Component {
   render() {
     return (
       <React.Fragment>
-        <div>
-          <Container>
-            <div className="section">
-              <h1>Submitted Applications</h1>
-              <Row>
-                <Tables />
-              </Row>
-            </div>
-            <div className="section">
-              <h1>Statistics</h1>
-              <Row className="charts">
-                <Col sm={4} className="chart">
-                  <Pie/>
-                </Col>
-                <Col sm={8} className="chart">
-                  <Line/>
-                </Col>
-              </Row>
-            </div>
-          </Container>
-        </div>
+        <Container>
+          <Row className="chart-container">
+            <Col className="chart" sm={12}>
+              <Tables />
+            </Col>
+          </Row>
+          <Row className="chart-container">
+            <Col className="chart" md={3}>
+              <Pie />
+            </Col>
+            <Col className="chart ml-5" md={8}>
+              <Line />
+            </Col>
+          </Row>
+        </Container>
       </React.Fragment>
     );
   }
