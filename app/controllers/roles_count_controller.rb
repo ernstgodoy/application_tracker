@@ -1,6 +1,5 @@
 class RolesCountController < ApplicationController
 
-
   def index 
     @metrics = Hash.new
     @jobs = Job.all
