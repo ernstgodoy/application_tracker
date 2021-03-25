@@ -1,0 +1,2 @@
+module ApplicationCountHelper
+end

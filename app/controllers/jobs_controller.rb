@@ -33,6 +33,27 @@ class JobsController < ApplicationController
     end
   end
 
+  def status_metrics 
+    @metrics = Hash.new
+    @jobs = Job.all
+    @jobs.map do |x|
+      status = x.status
+      @metrics.has_key?(status) ? (@metrics[status] += 1) : (@metrics[status] = 1)
+    end
+    render json: @metrics
+  end
+
+  def roles_count
+    @metrics = Hash.new
+    @jobs = Job.all
+    @metrics[:total_applications] = @jobs.length
+    @jobs.map do |x|
+      role = x.title
+      @metrics.has_key?(role) ? (@metrics[role] += 1) : (@metrics[role] = 1)
+    end
+    render json: @metrics
+  end
+
   private 
 
   def job_params
