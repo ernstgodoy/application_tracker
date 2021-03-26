@@ -1,29 +1,40 @@
 import React, { Component } from 'react';
-import { Row, Col, Container } from 'react-bootstrap'
+import { faPlusCircle } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import './dashboard.scss'
+
 import Tables from './application-table/Tables';
-import Line from './line-chart/Line';
 import Pie from './pie-chart/Pie';
+import ApplicationMetrics from './application-metrics/ApplicationMetrics'
+
 
 class NewDash extends Component {
   render() {
     return (
-      <React.Fragment>
-        <Container>
-          <Row className="chart-container">
-            <Col className="chart" sm={12}>
-              <Tables />
-            </Col>
-          </Row>
-          <Row className="chart-container">
-            <Col className="chart" md={3}>
-              <Pie />
-            </Col>
-            <Col className="chart ml-5" md={8}>
-              <Line />
-            </Col>
-          </Row>
-        </Container>
-      </React.Fragment>
+      <div className="dashboard-inner">
+        <div className="dash-right">
+          <div className="right-content">
+            <h4>Status Metrics</h4>
+            <ApplicationMetrics />
+          </div>
+          <div className="right-content">
+            <h4>Roles Applied</h4>
+            <Pie />
+          </div>
+        </div>
+        <div className="dash-left">
+          <div className="left-content">
+            <h1>Guy Person, cool boss</h1>
+          </div>
+          <div className="left-content">
+            <div className="header">
+            <h4>Current Applications</h4>
+              <a href="/new-application"><FontAwesomeIcon icon={faPlusCircle}/></a>
+            </div>
+            <Tables />
+          </div>
+        </div>
+      </div>
     );
   }
 }
