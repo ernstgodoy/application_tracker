@@ -1,31 +1,17 @@
 import React, { useState, useEffect } from 'react';
-import { Table, Container, Button } from "react-bootstrap"
+import { Table, Button } from "react-bootstrap"
 //icons
 import { faEdit, faTrash } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-//utils
-import { getRequest } from '../../../utils/ApiCalls'
 
 
-const Tables = () => {
+
+const ApplicationTable = (props) => {
   const [data, setData] = useState([])
-  const [isLoaded, setIsLoaded] = useState(false)
   
   useEffect(() => {
-    getData()
+    setData(props.data)
   }, [])
-  
-  const getData = () => {
-    let mounted = true
-    getRequest()
-    .then((resp) => {
-      if (mounted) {
-        setData(resp) 
-        setIsLoaded(true)
-      }
-    })
-    return () => mounted = false 
-  }
 
   return (
     <React.Fragment>
@@ -41,7 +27,7 @@ const Tables = () => {
           </tr>
         </thead>
         <tbody>
-          { isLoaded && data.map((d, i) => {
+          { data.map((d, i) => {
             const {
               id,
               company,
@@ -67,11 +53,13 @@ const Tables = () => {
           })}
         </tbody>
       </Table>
-      {(isLoaded && data.length === 0) && 
-        <h3>No Applications To Track</h3>
+      { data.length === 0 && 
+        <div className="no-data">
+          No Applications To Track
+        </div>
       }
     </React.Fragment>
   );
 };
 
-export default Tables;
+export default ApplicationTable;

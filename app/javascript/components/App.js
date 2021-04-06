@@ -3,7 +3,6 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom"
 //shared
 import Navigation from "./Navigation"
 //pages
-import Dashboard from "./Pages/dashboard/Dashboard"
 import Landing from "./Pages/landing/Landing"
 import NewApplication from "./Pages/add-new/NewApplication"
 import EditApplication from "./Pages/EditApplication"
@@ -27,12 +26,11 @@ class App extends React.Component {
         <Router>
           <Switch>
             <Route exact path="/" render={(props) => <Landing {...props} logged_in={ logged_in } sign_up_route={ sign_up_route }/> }/>
-            <Route path="/dashboard" component={ Dashboard }/>
             <Route path="/new-application" render={(props) => <NewApplication {...props} current_user={ current_user } csrf_token={ csrf_token }/> }/>
             <Route path="/edit-application/:id" render={(props) => <EditApplication {...props} csrf_token={ csrf_token }/> }/>
             <Route path="/delete-application/:id" render= {(props) => <DeleteApplication {...props} csrf_token={ csrf_token }/> }/>
             <Route path="/about" component={ About }/>
-            <Route path="/new-dashboard" component={ NewDash }/>
+            <Route path="/dashboard" component={ NewDash }/>
           </Switch>
         </Router>
       </React.Fragment>

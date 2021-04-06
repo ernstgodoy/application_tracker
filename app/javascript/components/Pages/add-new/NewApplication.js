@@ -28,7 +28,9 @@ const NewApplication = (props) => {
   return (
     <React.Fragment>
       <Container>
-        <h1>New Application</h1>
+        <div className="header">
+          <h1>New Application</h1>
+        </div>
         <Form className="add-new-form" onSubmit={ handleSubmit } >
           <Row>
             <Col md={6}>
@@ -84,7 +86,7 @@ const NewApplication = (props) => {
             </Button>
         </Form>
         { success && 
-          <Redirect to='/dash' />
+          <Redirect to='/dashboard' />
         }
       </Container>
     </React.Fragment>

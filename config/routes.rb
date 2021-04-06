@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
   resources :jobs
-  get "/application_count", to: "application_count#index"
   get "/roles_count", to: "jobs#roles_count"
   get "/status_metrics", to: "jobs#status_metrics"
   devise_for :users
