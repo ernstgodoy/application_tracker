@@ -1,5 +1,5 @@
 import React from 'react';
-import svg from '../../../assets/images/working.svg'
+import svg from '../../../../assets/images/working.svg'
 
 const Landing = (props) => {
   const {
