@@ -41,7 +41,9 @@ const EditApplication = (props) => {
   return (
     <React.Fragment>
       <Container>
-        <h1>Edit Application</h1>
+        <div className="header">
+          <h1>Edit Application</h1>
+        </div>
         { isLoaded && 
           <Form className="add-new-form" onSubmit={ onEdit } >
             <Row>

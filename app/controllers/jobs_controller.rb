@@ -1,6 +1,8 @@
 class JobsController < ApplicationController
   def index
-    @jobs = Job.all 
+    @jobs = Job.all
+    @jobs = @jobs.filter_by_role(params[:role]) if params[:role].present?
+    @jobs = @jobs.filter_by_company(params[:company]) if params[:company].present?
     render json: @jobs
   end 
 
@@ -35,10 +37,12 @@ class JobsController < ApplicationController
 
   def status_metrics 
     @metrics = Hash.new
+    @metrics[:statuses] = Hash.new
     @jobs = Job.all
+    @metrics[:total_applications] = @jobs.length
     @jobs.map do |x|
       status = x.status
-      @metrics.has_key?(status) ? (@metrics[status] += 1) : (@metrics[status] = 1)
+      @metrics[:statuses].has_key?(status) ? (@metrics[:statuses][status] += 1) : (@metrics[:statuses][status] = 1)
     end
     render json: @metrics
   end
@@ -46,7 +50,6 @@ class JobsController < ApplicationController
   def roles_count
     @metrics = Hash.new
     @jobs = Job.all
-    @metrics[:total_applications] = @jobs.length
     @jobs.map do |x|
       role = x.title
       @metrics.has_key?(role) ? (@metrics[role] += 1) : (@metrics[role] = 1)

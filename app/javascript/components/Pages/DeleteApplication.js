@@ -53,11 +53,11 @@ const DeleteApplication = (props) => {
         </Table>
         <Button onClick={ handleDelete }>Yes</Button>
         &nbsp;
-        <Button href={ `/dash` } variant="warning">Cancel</Button>
+        <Button href={ `/dashboard` } variant="warning">Cancel</Button>
         </>
         }
         { success &&
-          <Redirect to={ `/dash` } />
+          <Redirect to={ `/dashboard` } />
         }
       </Container>
     </React.Fragment>

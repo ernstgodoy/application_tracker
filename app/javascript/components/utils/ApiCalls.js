@@ -46,3 +46,19 @@ export const putRequest = (id, app, token) => {
     })
     .then(response => response)
 }
+
+export const getMetrics = () => {
+  return Promise.all([
+    fetch("/jobs").then(res => res.json()),
+    fetch("/roles_count").then(res => res.json()),
+    fetch("/status_metrics").then(res => res.json())
+  ])
+  .then(([jobs, roles, statuses]) => {
+    let response = new Object({
+      jobs: jobs,
+      roles_count: roles, 
+      status_count: statuses
+    })
+    return response
+  })
+}

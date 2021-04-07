@@ -17,7 +17,6 @@ const Navigation = (props) => {
             <>
             <Nav className="mr-auto">
               <Nav.Link href="/dashboard">Home</Nav.Link>
-              <Nav.Link href="/new-application">Track New Application</Nav.Link>
               <Nav.Link href="/about">About</Nav.Link>
             </Nav>
             <a className="button nav-btn" href={ sign_out_route }>
