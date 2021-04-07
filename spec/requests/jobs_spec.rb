@@ -5,7 +5,7 @@ describe "Jobs", type: :request do
     @user = User.create!(email: "test@mail.com", password: "password", password_confirmation: "password")
     Job.create!(user_id: @user.id, company: 'Company 1', title: 'Software Engineer', status: 'just applied', date_applied: '2000-10-06', last_follow_up: '2000-10-09')
     Job.create!(user_id: @user.id, company: 'Company 2', title: 'Frontend Engineer', status: 'phase 1', date_applied: '2000-10-01', last_follow_up: '2000-10-09')
-    Job.create!(user_id: @user.id, company: 'Company 2', title: 'Fullstack Engineer', status: 'phase 1', date_applied: '2000-10-01', last_follow_up: '2000-10-09')
+    Job.create!(user_id: @user.id, company: 'Company 3', title: 'Software Engineer', status: 'phase 1', date_applied: '2000-10-01', last_follow_up: '2000-10-09')
     @jobs = Job.all
   end
 
@@ -15,6 +15,18 @@ describe "Jobs", type: :request do
       json = JSON.parse(response.body)
       expect(response).to have_http_status(:ok)
       expect(json.length).to eq 3
+    end
+
+    it "gets a list of jobs filtered by role" do
+      get "/jobs", params: { role: "Software Engineer" }
+      json = JSON.parse(response.body)
+      expect(json.length).to eq 2
+    end
+
+    it "gets a list of jobs filtered by status" do
+      get "/jobs", params: { status: "phase 1" }
+      json = JSON.parse(response.body)
+      expect(json.length).to eq 2
     end
   end
 
@@ -56,6 +68,7 @@ describe "Jobs", type: :request do
       id = Job.first.id
       delete "/jobs/#{id}"
       expect(@jobs.length).to eq 2
+      expect(Job.first.id).to eq(id+1)
     end
   end
 
@@ -84,9 +97,10 @@ describe "Jobs", type: :request do
       get "/status_metrics"
       json = JSON.parse(response.body)
       expect(response).to have_http_status(:ok)
-      expect(json["just applied"]).to eq 1
-      expect(json["phase 1"]).to eq 2
+      expect(json["statuses"]["just applied"]).to eq 1
+      expect(json["statuses"]["phase 1"]).to eq 2
       expect(json.length).to eq 2
+      expect(json["total_applications"]).to eq 3
     end
   end
 
@@ -95,8 +109,7 @@ describe "Jobs", type: :request do
       get "/roles_count"
       json = JSON.parse(response.body)
       expect(response).to have_http_status(:ok)
-      expect(json["total_applications"]).to eq 3
-      expect(json.length).to eq 4
+      expect(json.length).to eq 2
     end
   end
 end
