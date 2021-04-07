@@ -2,7 +2,7 @@ class JobsController < ApplicationController
   def index
     @jobs = Job.all
     @jobs = @jobs.filter_by_role(params[:role]) if params[:role].present?
-    @jobs = @jobs.filter_by_company(params[:company]) if params[:company].present?
+    @jobs = @jobs.filter_by_status(params[:status]) if params[:status].present?
     render json: @jobs
   end 
 
