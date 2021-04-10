@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { faPlusCircle } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import './dashboard.scss'
 
 import ApplicationTable from './application-table/ApplicationTable';
 import Pie from './pie-chart/Pie';
@@ -20,8 +19,12 @@ class NewDash extends Component {
     }
   }
 
-  componentDidMount() {
-    this.getData()
+  // componentDidMount() {
+  //   this.getData()
+  // }
+
+  hi = () => {
+    return "hi"
   }
 
   getData = () => {
