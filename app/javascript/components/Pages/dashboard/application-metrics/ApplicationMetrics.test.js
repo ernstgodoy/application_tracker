@@ -16,7 +16,7 @@ describe('Application Metrics', () => {
     }
     const component = shallow(<ApplicationMetrics {...props} />)
 
-    expect(component.exists()).toBe(true)
+    expect(component.exists()).toEqual(true)
   })
 
   it('should make a list', () => {
@@ -30,14 +30,13 @@ describe('Application Metrics', () => {
       }
     }
     const component = shallow(<ApplicationMetrics {...props} />)
-
     const ul = component.find('ul')
     const li = component.find('li')
     const status = component.find('#status-test')
 
-    expect(ul.length).toBe(1)
-    expect(li.length).toBe(3)
-    expect(status.length).toBe(2)
+    expect(ul.length).toEqual(1)
+    expect(li.length).toEqual(3)
+    expect(status.length).toEqual(2)
   })
 
   it('should not make a list on empty statuses object', () => {
@@ -48,14 +47,12 @@ describe('Application Metrics', () => {
       }
     }
     const component = shallow(<ApplicationMetrics {...props} />)
-
     const ul = component.find('ul')
     const li = component.find('li')
     const status = component.find('#status-test')
 
-    expect(ul.length).toBe(1)
-    expect(li.length).toBe(1)
-    expect(status.length).toBe(0)
+    expect(ul.length).toEqual(1)
+    expect(li.length).toEqual(1)
+    expect(status.length).toEqual(0)
   })
-
 })
