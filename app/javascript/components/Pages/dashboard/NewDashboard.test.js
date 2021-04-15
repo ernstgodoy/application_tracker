@@ -9,21 +9,31 @@ import ApplicationTable from "./application-table/ApplicationTable"
 Enzyme.configure({adapter: new Adapter()})
 
 describe('Dashboard', () => {
+  let component;
+  let something = { jobs: {hello: 'hi'}, statuses: {hello: 'hi'}, metrics: {hello: 'hi'} }
+  global.fetch = jest.fn(() => Promise.resolve(something))
+
+  beforeEach(() => {
+    component = shallow(<NewDash />)
+  })
   
   it("renders", () => {
-    const component = shallow(<NewDash />)
     expect(component.exists()).toBe(true)
   })
 
+  it("calls componentDidMount", () => {
+    const instance = component.instance()
+    jest.spyOn(instance, 'getData')
+    instance.componentDidMount()
+    expect(instance.getData).toHaveBeenCalledTimes(1)
+  })
+
   it("has 3 children", () => {
-    const component = mount(<NewDash />)
     const children = [ApplicationMetrics, Pie, ApplicationTable]
     expect(component.containsAllMatchingElements(children)).toEqual(true)
-
   })
   
   it('has h5 tag', () => {
-    const component = shallow(<NewDash />)
     let subHeader = component.find('h5')
     expect(subHeader).toBeTruthy()
     expect(subHeader.length).toEqual(3)

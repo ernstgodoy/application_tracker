@@ -19,12 +19,8 @@ class NewDash extends Component {
     }
   }
 
-  // componentDidMount() {
-  //   this.getData()
-  // }
-
-  hi = () => {
-    return "hi"
+  componentDidMount() {
+    this.getData()
   }
 
   getData = () => {
