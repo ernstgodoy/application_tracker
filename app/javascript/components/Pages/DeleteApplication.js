@@ -35,7 +35,7 @@ const DeleteApplication = (props) => {
           <thead>
             <tr>
               <th>Company Name</th>
-              <th>Job Title</th>
+              <th>Role</th>
               <th>Application Status</th>
               <th>Date Applied</th>
               <th>Last Follow Up</th>
@@ -44,7 +44,7 @@ const DeleteApplication = (props) => {
           <tbody>
             <tr>
               <td>{ data.company }</td>
-              <td>{ data.title }</td>
+              <td>{ data.role }</td>
               <td>{ data.status }</td>
               <td>{ data.date_applied }</td>
               <td>{ data.last_follow_up }</td>

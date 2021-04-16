@@ -19,7 +19,7 @@ describe('Application Table', () => {
           id: 1,
           user_id: 1,
           company: "company",
-          title: "Frontend Engineer",
+          role: "Frontend Engineer",
           status: "Just Applied",
           date_applied: "2021-04-15",
           last_follow_up: "2021-04-15"
@@ -28,7 +28,7 @@ describe('Application Table', () => {
           id: 2,
           user_id: 1,
           company: "company",
-          title: "Software Engineer",
+          role: "Software Engineer",
           status: "Just Applied",
           date_applied: "2021-04-15",
           last_follow_up: "2021-04-15"
@@ -54,7 +54,7 @@ describe('Application Table', () => {
           id: 1,
           user_id: 1,
           company: "company",
-          title: "Frontend Engineer",
+          role: "Frontend Engineer",
           status: "Just Applied",
           date_applied: "2021-04-15",
           last_follow_up: "2021-04-15"

@@ -9,6 +9,21 @@
             <%= render "devise/shared/error_messages", resource: resource %>
 
             <div class="form-group">
+              <%= f.label :first_name, class: "control-label" %><br />
+              <%= f.text_field :first_name, autofocus: true, autocomplete: "first_name", class: "form-control"  %>
+            </div>
+
+            <div class="form-group">
+              <%= f.label :last_name, class: "control-label" %><br />
+              <%= f.text_field :last_name, autofocus: true, autocomplete: "last_name", class: "form-control"  %>
+            </div>
+
+            <div class="form-group">
+              <%= f.label :job_title, class: "control-label" %><br />
+              <%= f.text_field :job_title, autofocus: true, autocomplete: "job_title", class: "form-control"  %>
+            </div>
+
+            <div class="form-group">
               <%= f.label :email, class: "control-label" %><br />
               <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control"  %>
             </div>

@@ -5,10 +5,10 @@ describe "Jobs", type: :request do
     @user1 = User.create!(email: "test1@mail.com", password: "password", password_confirmation: "password")
     @user2 = User.create!(email: "test2@mail.com", password: "password", password_confirmation: "password")
     sign_in @user1
-    Job.create!(user_id: @user2.id, company: 'Company 3', title: 'Software Engineer', status: 'phase 1', date_applied: '2000-10-01', last_follow_up: '2000-10-09')
-    Job.create!(user_id: @user1.id, company: 'Company 1', title: 'Software Engineer', status: 'just applied', date_applied: '2000-10-06', last_follow_up: '2000-10-09')
-    Job.create!(user_id: @user1.id, company: 'Company 2', title: 'Frontend Engineer', status: 'phase 1', date_applied: '2000-10-01', last_follow_up: '2000-10-09')
-    Job.create!(user_id: @user1.id, company: 'Company 3', title: 'Software Engineer', status: 'phase 1', date_applied: '2000-10-01', last_follow_up: '2000-10-09')
+    Job.create!(user_id: @user2.id, company: 'Company 3', role: 'Software Engineer', status: 'phase 1', date_applied: '2000-10-01', last_follow_up: '2000-10-09')
+    Job.create!(user_id: @user1.id, company: 'Company 1', role: 'Software Engineer', status: 'just applied', date_applied: '2000-10-06', last_follow_up: '2000-10-09')
+    Job.create!(user_id: @user1.id, company: 'Company 2', role: 'Frontend Engineer', status: 'phase 1', date_applied: '2000-10-01', last_follow_up: '2000-10-09')
+    Job.create!(user_id: @user1.id, company: 'Company 3', role: 'Software Engineer', status: 'phase 1', date_applied: '2000-10-01', last_follow_up: '2000-10-09')
 
     @jobs = Job.all
   end
@@ -40,7 +40,7 @@ describe "Jobs", type: :request do
         job: {
           user_id: @user1.id,
           company: 'best company',
-          title: 'Software Engineer',
+          role: 'Software Engineer',
           status: 'just applied', 
           date_applied: '2021-1-06', 
           last_follow_up: '2021-1-09'
@@ -58,7 +58,7 @@ describe "Jobs", type: :request do
         job: {
           user_id: @user1.id,
           company: 'best company',
-          title: 'Software Engineer',
+          role: 'Software Engineer',
         }
       }
       post "/jobs", params: job_params
@@ -83,7 +83,7 @@ describe "Jobs", type: :request do
         job: {
           user_id: first.user_id, 
           company: first.company, 
-          title: first.title, 
+          role: first.role, 
           status: 'Phase 2', 
           date_applied: first.date_applied, 
           last_follow_up: "2000-10-31"
