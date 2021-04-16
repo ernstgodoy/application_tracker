@@ -4,8 +4,6 @@ import { Table, Button } from "react-bootstrap"
 import { faEdit, faTrash } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-
-
 const ApplicationTable = (props) => {
   const [data, setData] = useState([])
   
