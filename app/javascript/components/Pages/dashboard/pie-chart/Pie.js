@@ -58,7 +58,7 @@ const Pie = (props) => {
   }
 
   return (
-    <div>
+    <div id="chart">
       <HighchartsReact
         highcharts={Highcharts}
         options={options}

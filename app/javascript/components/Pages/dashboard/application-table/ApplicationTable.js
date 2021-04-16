@@ -4,8 +4,6 @@ import { Table, Button } from "react-bootstrap"
 import { faEdit, faTrash } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-
-
 const ApplicationTable = (props) => {
   const [data, setData] = useState([])
   
@@ -15,7 +13,7 @@ const ApplicationTable = (props) => {
 
   return (
     <React.Fragment>
-      <Table hover responsive>
+      <Table id="table-test" hover responsive>
         <thead>
           <tr>
             <th>Company Name</th>
@@ -37,16 +35,16 @@ const ApplicationTable = (props) => {
               last_follow_up
             } = d
             return(
-              <tr key={i}>
+              <tr id="table-row-test" key={i}>
                 <td>{ company }</td>
                 <td>{ title }</td>
                 <td>{ status }</td>
                 <td>{ date_applied }</td>
                 <td>{ last_follow_up }</td>
                 <td>
-                  <Button href={`/edit-application/${id}`} variant="success" size="sm"><FontAwesomeIcon icon={faEdit} size="xs" /></Button>
+                  <Button id="edit-button-test" href={`/edit-application/${id}`} variant="success" size="sm"><FontAwesomeIcon icon={faEdit} size="xs" /></Button>
                   &nbsp;
-                  <Button href={ `/delete-application/${id}` } size="sm"><FontAwesomeIcon icon={faTrash} size="xs" /></Button>
+                  <Button id="delete-button-test" href={ `/delete-application/${id}` } size="sm"><FontAwesomeIcon icon={faTrash} size="xs" /></Button>
                 </td>
               </tr>
             )

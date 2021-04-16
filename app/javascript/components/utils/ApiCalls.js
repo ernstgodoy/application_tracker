@@ -3,6 +3,7 @@ export const getRequest = () => {
     method: "GET"
   })
   .then(response => response.json())
+  .catch(err => err)
 }
 
 export const getByIdRequest = (id) => {
@@ -10,6 +11,7 @@ export const getByIdRequest = (id) => {
     method: "GET"
   })
   .then(response => response.json())
+  .catch(err => err)
 }
 
 export const postRequest = (app, token) => {
@@ -22,6 +24,7 @@ export const postRequest = (app, token) => {
       }
     })
     .then(response => response)
+    .catch(err => err)
 }
 
 export const deleteRequest = (id, token) => {
@@ -33,6 +36,7 @@ export const deleteRequest = (id, token) => {
       }
     })
     .then(response => response)
+    .catch(err => err)
 }
 
 export const putRequest = (id, app, token) => {
@@ -45,6 +49,7 @@ export const putRequest = (id, app, token) => {
       },
     })
     .then(response => response)
+    .catch(err => err)
 }
 
 export const getMetrics = () => {
@@ -61,4 +66,5 @@ export const getMetrics = () => {
     })
     return response
   })
+  .catch(err => err)
 }
