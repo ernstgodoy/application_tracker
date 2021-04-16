@@ -2,10 +2,14 @@ require 'rails_helper'
 
 describe "Jobs", type: :request do
   before :each do 
-    @user = User.create!(email: "test@mail.com", password: "password", password_confirmation: "password")
-    Job.create!(user_id: @user.id, company: 'Company 1', title: 'Software Engineer', status: 'just applied', date_applied: '2000-10-06', last_follow_up: '2000-10-09')
-    Job.create!(user_id: @user.id, company: 'Company 2', title: 'Frontend Engineer', status: 'phase 1', date_applied: '2000-10-01', last_follow_up: '2000-10-09')
-    Job.create!(user_id: @user.id, company: 'Company 3', title: 'Software Engineer', status: 'phase 1', date_applied: '2000-10-01', last_follow_up: '2000-10-09')
+    @user1 = User.create!(email: "test1@mail.com", password: "password", password_confirmation: "password")
+    @user2 = User.create!(email: "test2@mail.com", password: "password", password_confirmation: "password")
+    sign_in @user1
+    Job.create!(user_id: @user2.id, company: 'Company 3', title: 'Software Engineer', status: 'phase 1', date_applied: '2000-10-01', last_follow_up: '2000-10-09')
+    Job.create!(user_id: @user1.id, company: 'Company 1', title: 'Software Engineer', status: 'just applied', date_applied: '2000-10-06', last_follow_up: '2000-10-09')
+    Job.create!(user_id: @user1.id, company: 'Company 2', title: 'Frontend Engineer', status: 'phase 1', date_applied: '2000-10-01', last_follow_up: '2000-10-09')
+    Job.create!(user_id: @user1.id, company: 'Company 3', title: 'Software Engineer', status: 'phase 1', date_applied: '2000-10-01', last_follow_up: '2000-10-09')
+
     @jobs = Job.all
   end
 
@@ -34,7 +38,7 @@ describe "Jobs", type: :request do
     it "creates a job" do
       job_params = {
         job: {
-          user_id: @user.id,
+          user_id: @user1.id,
           company: 'best company',
           title: 'Software Engineer',
           status: 'just applied', 
@@ -46,20 +50,20 @@ describe "Jobs", type: :request do
       new_job = Job.last
       expect(response).to have_http_status(:ok)
       expect(new_job.company).to eq 'best company'
-      expect(@jobs.length).to eq 4
+      expect(@jobs.length).to eq 5
     end
 
     it "throws error on invalid params" do
       job_params = {
         job: {
-          user_id: @user.id,
+          user_id: @user1.id,
           company: 'best company',
           title: 'Software Engineer',
         }
       }
       post "/jobs", params: job_params
       expect(response).to have_http_status(422)
-      expect(@jobs.length).to eq 3
+      expect(@jobs.length).to eq 4
     end
   end
 
@@ -67,7 +71,7 @@ describe "Jobs", type: :request do
     it "deletes a job" do
       id = Job.first.id
       delete "/jobs/#{id}"
-      expect(@jobs.length).to eq 2
+      expect(@jobs.length).to eq 3
       expect(Job.first.id).to eq(id+1)
     end
   end

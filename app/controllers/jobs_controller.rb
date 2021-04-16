@@ -1,13 +1,14 @@
 class JobsController < ApplicationController
+
   def index
-    @jobs = Job.all
+    @jobs = current_user.jobs
     @jobs = @jobs.filter_by_role(params[:role]) if params[:role].present?
     @jobs = @jobs.filter_by_status(params[:status]) if params[:status].present?
     render json: @jobs
   end 
 
   def show
-    @jobs = Job.find(params[:id])
+    @jobs = current_user.jobs.find(params[:id])
     render json: @jobs
   end
 
@@ -22,7 +23,6 @@ class JobsController < ApplicationController
 
   def destroy
     Job.destroy(params[:id])
-    render json: Job.all
   end
 
   def update
@@ -38,7 +38,7 @@ class JobsController < ApplicationController
   def status_metrics 
     @metrics = Hash.new
     @metrics[:statuses] = Hash.new
-    @jobs = Job.all
+    @jobs = current_user.jobs
     @metrics[:total_applications] = @jobs.length
     @jobs.map do |x|
       status = x.status
@@ -49,7 +49,7 @@ class JobsController < ApplicationController
 
   def roles_count
     @metrics = Hash.new
-    @jobs = Job.all
+    @jobs = current_user.jobs
     @jobs.map do |x|
       role = x.title
       @metrics.has_key?(role) ? (@metrics[role] += 1) : (@metrics[role] = 1)
