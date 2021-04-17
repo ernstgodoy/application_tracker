@@ -3,13 +3,26 @@ import { Table, Button } from "react-bootstrap"
 //icons
 import { faEdit, faTrash } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import DeleteModal from '../delete-modal/DeleteModal';
 
 const ApplicationTable = (props) => {
   const [data, setData] = useState([])
+  const [modalShow, setModalShow] = useState(false);
+  const [tempId, setTempId] = useState(undefined)
   
   useEffect(() => {
     setData(props.data)
-  }, [])
+  }, [data])
+
+  const openModal = (id) => {
+    setModalShow(true)
+    setTempId(id)
+  }
+
+  const hideModal = () => {
+    setModalShow(false)
+    setTempId(undefined)
+  }
 
   return (
     <React.Fragment>
@@ -42,9 +55,9 @@ const ApplicationTable = (props) => {
                 <td>{ date_applied }</td>
                 <td>{ last_follow_up }</td>
                 <td>
-                  <Button id="edit-button-test" href={`/edit-application/${id}`} variant="success" size="sm"><FontAwesomeIcon icon={faEdit} size="xs" /></Button>
+                  <Button id="edit-button-test" href={`/edit-application/${id}`} variant="success" size="sm"><FontAwesomeIcon icon={ faEdit } size="xs" /></Button>
                   &nbsp;
-                  <Button id="delete-button-test" href={ `/delete-application/${id}` } size="sm"><FontAwesomeIcon icon={faTrash} size="xs" /></Button>
+                  <Button id="delete-button-test" onClick={ () => openModal(id) } size="sm"><FontAwesomeIcon icon={ faTrash } size="xs" /></Button>
                 </td>
               </tr>
             )
@@ -56,6 +69,7 @@ const ApplicationTable = (props) => {
           No Applications To Track
         </div>
       }
+      <DeleteModal id={ tempId } token={ props.csrf_token } show={ modalShow } onHide={ () => hideModal() }/>
     </React.Fragment>
   );
 };

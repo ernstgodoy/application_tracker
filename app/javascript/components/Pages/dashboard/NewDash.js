@@ -48,6 +48,10 @@ class NewDash extends Component {
       fullName
     } = this.state
 
+    const {
+      csrf_token
+    } = this.props
+
     return (
       <div className="dashboard">
         {/* <h1>{fullName}, {jobTitle}</h1> */}
@@ -77,7 +81,7 @@ class NewDash extends Component {
                 <a href="/new-application"><FontAwesomeIcon icon={faPlusCircle}/></a>
               </div>
               { dataLoaded && 
-                <ApplicationTable data={ tableData } />
+                <ApplicationTable csrf_token={ csrf_token } data={ tableData } />
               }
             </div>
           </div>
