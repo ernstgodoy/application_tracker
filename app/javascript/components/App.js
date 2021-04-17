@@ -30,7 +30,7 @@ class App extends React.Component {
             <Route path="/edit-application/:id" render={(props) => <EditApplication {...props} csrf_token={ csrf_token }/> }/>
             <Route path="/delete-application/:id" render= {(props) => <DeleteApplication {...props} csrf_token={ csrf_token }/> }/>
             <Route path="/about" component={ About }/>
-            <Route path="/dashboard" component={ NewDash }/>
+            <Route path="/dashboard" render= {(props) => <NewDash {...props} current_user={ current_user }/> }/>
           </Switch>
         </Router>
       </React.Fragment>

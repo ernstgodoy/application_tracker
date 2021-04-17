@@ -54,9 +54,9 @@ const EditApplication = (props) => {
                 </Form.Group>
               </Col>
               <Col md={6}>
-                <Form.Group controlId="jobtitle">
-                  <Form.Label>Job Title</Form.Label>
-                  <Form.Control name="title" type="text" value={ data.title || "" } onChange={ handleChange } placeholder="Job Title" />
+                <Form.Group controlId="jobrole">
+                  <Form.Label>Role</Form.Label>
+                  <Form.Control name="role" type="text" value={ data.role || "" } onChange={ handleChange } placeholder="Role" />
                 </Form.Group>
               </Col>
             </Row>
@@ -81,15 +81,13 @@ const EditApplication = (props) => {
                   <Form.Label>Application Status</Form.Label>
                   <Form.Control name="status" value={ data.status || "" } onChange={ handleChange } as="select">
                     <option disabled value="">Select</option>
-                    <option>Just Applied</option>
-                    <option>Assessment</option>
-                    <option>Phase 1</option>
-                    <option>Phase 2</option>
-                    <option>Phase 3</option>
-                    <option>Initial Phone Screening</option>
-                    <option>Phone Interview</option>
-                    <option>Onsite</option>
-                    <option>Not Hired</option>
+                    <option value="initial submission">Initial Submission</option>
+                    <option value="phone screen">Phone Screen</option>
+                    <option value="take home project">Take Home Project</option>
+                    <option value="onsite">Onsite</option>
+                    <option value="offer">Offer</option>
+                    <option value="not hired">Not Hired</option>
+                    <option value="hired">Hired</option>
                   </Form.Control>
                 </Form.Group>
               </Col>

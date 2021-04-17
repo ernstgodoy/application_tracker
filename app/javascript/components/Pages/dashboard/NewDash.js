@@ -15,7 +15,9 @@ class NewDash extends Component {
       pieData: [],
       tableData: [],
       metricsData: [],
-      dataLoaded: false
+      dataLoaded: false,
+      fullName: "",
+      jobTitle: ""
     }
   }
 
@@ -29,7 +31,9 @@ class NewDash extends Component {
         pieData: res.roles_count,
         tableData: res.jobs,
         metricsData: res.status_count,
-        dataLoaded: true
+        fullName: `${this.props.current_user.first_name} ${this.props.current_user.last_name}`,
+        jobTitle: `${this.props.current_user.job_title}`,
+        dataLoaded: true,
       })
     })
   }
@@ -39,12 +43,14 @@ class NewDash extends Component {
       dataLoaded, 
       pieData, 
       tableData, 
-      metricsData 
+      metricsData,
+      jobTitle,
+      fullName
     } = this.state
 
     return (
       <div className="dashboard">
-        {/* <h1>Guy Person, cool boss</h1> */}
+        {/* <h1>{fullName}, {jobTitle}</h1> */}
         <div className="dashboard-inner">
           <div className="dash-right">
             <div className="right-content">

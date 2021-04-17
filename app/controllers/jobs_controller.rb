@@ -51,7 +51,7 @@ class JobsController < ApplicationController
     @metrics = Hash.new
     @jobs = current_user.jobs
     @jobs.map do |x|
-      role = x.title
+      role = x.role
       @metrics.has_key?(role) ? (@metrics[role] += 1) : (@metrics[role] = 1)
     end
     render json: @metrics
@@ -60,7 +60,7 @@ class JobsController < ApplicationController
   private 
 
   def job_params
-    params.require(:job).permit(:user_id, :company, :title, :status, :date_applied, :last_follow_up)
+    params.require(:job).permit(:user_id, :company, :role, :status, :date_applied, :last_follow_up)
   end
 
 end

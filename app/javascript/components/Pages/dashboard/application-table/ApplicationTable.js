@@ -17,7 +17,7 @@ const ApplicationTable = (props) => {
         <thead>
           <tr>
             <th>Company Name</th>
-            <th>Job Title</th>
+            <th>Role</th>
             <th>Application Status</th>
             <th>Date Applied</th>
             <th>Last Follow Up</th>
@@ -29,7 +29,7 @@ const ApplicationTable = (props) => {
             const {
               id,
               company,
-              title,
+              role,
               status,
               date_applied,
               last_follow_up
@@ -37,7 +37,7 @@ const ApplicationTable = (props) => {
             return(
               <tr id="table-row-test" key={i}>
                 <td>{ company }</td>
-                <td>{ title }</td>
+                <td>{ role }</td>
                 <td>{ status }</td>
                 <td>{ date_applied }</td>
                 <td>{ last_follow_up }</td>
