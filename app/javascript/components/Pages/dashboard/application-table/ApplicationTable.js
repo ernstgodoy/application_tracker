@@ -6,13 +6,9 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import DeleteModal from '../delete-modal/DeleteModal';
 
 const ApplicationTable = (props) => {
-  const [data, setData] = useState([])
   const [modalShow, setModalShow] = useState(false);
   const [tempId, setTempId] = useState(undefined)
-  
-  useEffect(() => {
-    setData(props.data)
-  }, [data])
+  const { data, state_refresh, csrf_token } = props
 
   const openModal = (id) => {
     setModalShow(true)
@@ -22,6 +18,7 @@ const ApplicationTable = (props) => {
   const hideModal = () => {
     setModalShow(false)
     setTempId(undefined)
+    state_refresh()
   }
 
   return (
@@ -69,7 +66,7 @@ const ApplicationTable = (props) => {
           No Applications To Track
         </div>
       }
-      <DeleteModal id={ tempId } token={ props.csrf_token } show={ modalShow } onHide={ () => hideModal() }/>
+      <DeleteModal id={ tempId } token={ csrf_token } show={ modalShow } onHide={ () => hideModal() }/>
     </React.Fragment>
   );
 };

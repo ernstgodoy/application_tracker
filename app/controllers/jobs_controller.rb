@@ -23,7 +23,6 @@ class JobsController < ApplicationController
 
   def destroy
     Job.destroy(params[:id])
-    render json: current_user.jobs
   end
 
   def update

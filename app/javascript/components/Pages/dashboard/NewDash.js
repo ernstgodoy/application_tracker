@@ -16,13 +16,23 @@ class NewDash extends Component {
       tableData: [],
       metricsData: [],
       dataLoaded: false,
-      fullName: "",
-      jobTitle: ""
+      fullName: `${this.props.current_user.first_name} ${this.props.current_user.last_name}`,
+      jobTitle: `${this.props.current_user.job_title}`,
     }
   }
 
   componentDidMount() {
     this.getData()
+  }
+
+  stateRefresh = () => {
+    getMetrics().then(res => {
+      this.setState({
+        pieData: res.roles_count,
+        tableData: res.jobs,
+        metricsData: res.status_count,
+      })
+    })
   }
 
   getData = () => {
@@ -31,8 +41,6 @@ class NewDash extends Component {
         pieData: res.roles_count,
         tableData: res.jobs,
         metricsData: res.status_count,
-        fullName: `${this.props.current_user.first_name} ${this.props.current_user.last_name}`,
-        jobTitle: `${this.props.current_user.job_title}`,
         dataLoaded: true,
       })
     })
@@ -44,8 +52,6 @@ class NewDash extends Component {
       pieData, 
       tableData, 
       metricsData,
-      jobTitle,
-      fullName
     } = this.state
 
     const {
@@ -81,7 +87,7 @@ class NewDash extends Component {
                 <a href="/new-application"><FontAwesomeIcon icon={faPlusCircle}/></a>
               </div>
               { dataLoaded && 
-                <ApplicationTable csrf_token={ csrf_token } data={ tableData } />
+                <ApplicationTable state_refresh={ () => this.stateRefresh() } csrf_token={ csrf_token } data={ tableData } />
               }
             </div>
           </div>

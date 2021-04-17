@@ -10,7 +10,6 @@ const useForm = (defaultValues, submitCallback) => {
   
   const handleChange = (e) => {
     e.persist()
-    console.log(e.target.value)
     setValues(values => ({ ...values, [e.target.name]: e.target.value }))
   }
   return [values, handleChange, handleSubmit]

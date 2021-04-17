@@ -6,7 +6,6 @@ import Navigation from "./Navigation"
 import Landing from "./Pages/landing/Landing"
 import NewApplication from "./Pages/add-new/NewApplication"
 import EditApplication from "./Pages/EditApplication"
-import DeleteApplication from "./Pages/DeleteApplication"
 import About from "./Pages/about/About"
 import NewDash from "./Pages/dashboard/NewDash"
 

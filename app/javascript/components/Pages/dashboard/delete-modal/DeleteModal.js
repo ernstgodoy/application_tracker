@@ -20,7 +20,7 @@ const DeleteModal = (props) => {
   }
 
   return (
-    < Modal
+    <Modal
       {...props}
       size="lg"
       aria-labelledby="contained-modal-title-vcenter"
@@ -43,7 +43,7 @@ const DeleteModal = (props) => {
         }
       </Modal.Body>
       <Modal.Footer>
-        <Button onClick={ onHide }>Cancel</Button>
+        <Button variant="warning" onClick={ onHide }>Cancel</Button>
         <Button onClick={ () => handleDelete() }>Delete</Button>
       </Modal.Footer>
     </Modal>
