@@ -10,8 +10,7 @@ describe('Application Table', () => {
   it("renders", () => {
     const props = {
       data: [],
-      csrf_token: 'token',
-      state_refresh: jest.fn()
+      openModal: jest.fn()
     }
 
     const component = mount(<ApplicationTable {...props} />)
@@ -40,8 +39,7 @@ describe('Application Table', () => {
           last_follow_up: "2021-04-15"
         }
       ],
-      csrf_token: 'token',
-      state_refresh: jest.fn()
+      openModal: jest.fn()
     }
     const component = mount(<ApplicationTable {...props} />)
     const table = component.find('#table-test')
@@ -68,8 +66,7 @@ describe('Application Table', () => {
           last_follow_up: "2021-04-15"
         }
       ],
-      csrf_token: 'token',
-      state_refresh: jest.fn()
+      openModal: jest.fn()
     }
     const component = mount(<ApplicationTable {...props} />)
     const row = component.find('#table-row-test')
@@ -93,8 +90,7 @@ describe('Application Table', () => {
           last_follow_up: "2021-04-15"
         }
       ],
-      csrf_token: 'token',
-      state_refresh: jest.fn()
+      openModal: jest.fn()
     }
     const component = mount(<ApplicationTable {...props} />)
     const row = component.find('#table-row-test')
@@ -112,8 +108,7 @@ describe('Application Table', () => {
   it('should display no applications to track', () => {
     const props = {
       data: [],
-      csrf_token: 'token',
-      state_refresh: jest.fn()
+      openModal: jest.fn()
     }
     const component = mount(<ApplicationTable {...props} />)
     const noData = component.find('.no-data')

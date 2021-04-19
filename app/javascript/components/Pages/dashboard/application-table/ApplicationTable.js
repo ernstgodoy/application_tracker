@@ -1,25 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { Table, Button } from "react-bootstrap"
 //icons
 import { faEdit, faTrash } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import DeleteModal from '../delete-modal/DeleteModal';
 
 const ApplicationTable = (props) => {
-  const [modalShow, setModalShow] = useState(false);
-  const [tempId, setTempId] = useState(undefined)
-  const { data, state_refresh, csrf_token } = props
-
-  const openModal = (id) => {
-    setModalShow(true)
-    setTempId(id)
-  }
-
-  const hideModal = () => {
-    setModalShow(false)
-    setTempId(undefined)
-    state_refresh()
-  }
+  const { data, openModal } = props
 
   return (
     <React.Fragment>
@@ -66,7 +52,6 @@ const ApplicationTable = (props) => {
           No Applications To Track
         </div>
       }
-      <DeleteModal id={ tempId } token={ csrf_token } show={ modalShow } onHide={ () => hideModal() }/>
     </React.Fragment>
   );
 };
