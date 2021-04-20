@@ -9,12 +9,19 @@ import ApplicationTable from "./application-table/ApplicationTable"
 Enzyme.configure({adapter: new Adapter()})
 
 describe('Dashboard', () => {
-  let component;
+  let component, props;
   let something = { jobs: {hello: 'hi'}, statuses: {hello: 'hi'}, metrics: {hello: 'hi'} }
   global.fetch = jest.fn(() => Promise.resolve(something))
-
   beforeEach(() => {
-    component = shallow(<NewDash />)
+    props = {
+      csrf_token: 'token',
+      current_user: {
+        first_name: 'test',
+        last_name: 'person',
+        job_title: 'title'
+      }
+    }
+    component = shallow(<NewDash {...props} />)
   })
   
   it("renders", () => {

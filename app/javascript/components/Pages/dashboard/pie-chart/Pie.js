@@ -8,12 +8,11 @@ const Pie = (props) => {
   const [options, setOptions] = useState(new Object())
 
   useEffect(() => {
-    let data = props.data
-    chartOptions(data)
-  }, [])
+    chartOptions(props.data)
+  }, [props.data])
 
   const chartOptions = (data) => {
-    return setOptions({
+    setOptions({
       chart: {
         type: 'pie',
       },

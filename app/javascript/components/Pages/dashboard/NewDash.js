@@ -5,6 +5,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import ApplicationTable from './application-table/ApplicationTable';
 import Pie from './pie-chart/Pie';
 import ApplicationMetrics from './application-metrics/ApplicationMetrics'
+import DeleteModal from './delete-modal/DeleteModal'
+
 import { getMetrics } from '../../utils/ApiCalls';
 
 
@@ -16,8 +18,10 @@ class NewDash extends Component {
       tableData: [],
       metricsData: [],
       dataLoaded: false,
-      fullName: "",
-      jobTitle: ""
+      fullName: `${this.props.current_user.first_name} ${this.props.current_user.last_name}`,
+      jobTitle: `${this.props.current_user.job_title}`,
+      modalShow: false,
+      tempId: undefined,
     }
   }
 
@@ -31,11 +35,29 @@ class NewDash extends Component {
         pieData: res.roles_count,
         tableData: res.jobs,
         metricsData: res.status_count,
-        fullName: `${this.props.current_user.first_name} ${this.props.current_user.last_name}`,
-        jobTitle: `${this.props.current_user.job_title}`,
-        dataLoaded: true,
       })
+
+      if (!this.state.dataLoaded) {
+        this.setState({
+          dataLoaded: true
+        })
+      }
     })
+  }
+
+  openModal = (id) => {
+    this.setState({
+      modalShow: true,
+      tempId: id
+    })
+  }
+
+  onDelete = () => {
+    this.setState({
+      modalShow: false,
+      tempId: undefined,
+    })
+    this.getData()
   }
 
   render() {
@@ -44,9 +66,13 @@ class NewDash extends Component {
       pieData, 
       tableData, 
       metricsData,
-      jobTitle,
-      fullName
+      tempId,
+      modalShow,
     } = this.state
+
+    const {
+      csrf_token
+    } = this.props
 
     return (
       <div className="dashboard">
@@ -77,10 +103,17 @@ class NewDash extends Component {
                 <a href="/new-application"><FontAwesomeIcon icon={faPlusCircle}/></a>
               </div>
               { dataLoaded && 
-                <ApplicationTable data={ tableData } />
+                <ApplicationTable openModal={ (id) => this.openModal(id) } data={ tableData } />
               }
             </div>
           </div>
+          <DeleteModal 
+            tempId={ tempId } 
+            token={ csrf_token } 
+            show={ modalShow } 
+            closeModal={ () => this.setState({ modalShow: false }) } 
+            onDelete={ () => this.onDelete() } 
+          />
         </div>
       </div>
     );

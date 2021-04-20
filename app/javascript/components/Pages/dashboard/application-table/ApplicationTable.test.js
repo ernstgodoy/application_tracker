@@ -8,7 +8,12 @@ Enzyme.configure({adapter: new Adapter()})
 describe('Application Table', () => {
 
   it("renders", () => {
-    const component = shallow(<ApplicationTable />)
+    const props = {
+      data: [],
+      openModal: jest.fn()
+    }
+
+    const component = mount(<ApplicationTable {...props} />)
     expect(component.exists()).toEqual(true)
   })
 
@@ -33,7 +38,8 @@ describe('Application Table', () => {
           date_applied: "2021-04-15",
           last_follow_up: "2021-04-15"
         }
-      ]
+      ],
+      openModal: jest.fn()
     }
     const component = mount(<ApplicationTable {...props} />)
     const table = component.find('#table-test')
@@ -46,7 +52,7 @@ describe('Application Table', () => {
     expect(noData.exists()).toEqual(false)
   })
 
-  it('edit button and delete button redirects', () => {
+  it('edit button exists and redirects', () => {
     global.window = { location: { pathname: null }}
     const props = {
       data: [
@@ -59,23 +65,50 @@ describe('Application Table', () => {
           date_applied: "2021-04-15",
           last_follow_up: "2021-04-15"
         }
-      ]
+      ],
+      openModal: jest.fn()
     }
     const component = mount(<ApplicationTable {...props} />)
     const row = component.find('#table-row-test')
     const edit = component.find('#edit-button-test').hostNodes()
-    const del = row.find('#delete-button-test').hostNodes()
 
     expect(row.length).toEqual(1)
     expect(edit.exists()).toEqual(true)
     expect(edit.getDOMNode().getAttribute('href')).toEqual('/edit-application/1')
+  })
+
+  it('delete button exists and opens modal', () => {
+    const props = {
+      data: [
+        {
+          id: 1,
+          user_id: 1,
+          company: "company",
+          role: "Frontend Engineer",
+          status: "Just Applied",
+          date_applied: "2021-04-15",
+          last_follow_up: "2021-04-15"
+        }
+      ],
+      openModal: jest.fn()
+    }
+    const component = mount(<ApplicationTable {...props} />)
+    const row = component.find('#table-row-test')
+    const del = row.find('#delete-button-test').hostNodes()
+    const openModal = jest.fn()
+    
+    expect(row.length).toEqual(1)
     expect(del.exists()).toEqual(true)
-    expect(del.getDOMNode().getAttribute('href')).toEqual('/delete-application/1')
+    // finish test
+    // del.getElement().props.onClick()
+    // del.simulate('click')
+    // expect(openModal).toHaveBeenCalled(1)
   })
 
   it('should display no applications to track', () => {
     const props = {
-      data: []
+      data: [],
+      openModal: jest.fn()
     }
     const component = mount(<ApplicationTable {...props} />)
     const noData = component.find('.no-data')

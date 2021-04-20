@@ -6,7 +6,6 @@ import Navigation from "./Navigation"
 import Landing from "./Pages/landing/Landing"
 import NewApplication from "./Pages/add-new/NewApplication"
 import EditApplication from "./Pages/EditApplication"
-import DeleteApplication from "./Pages/DeleteApplication"
 import About from "./Pages/about/About"
 import NewDash from "./Pages/dashboard/NewDash"
 
@@ -28,9 +27,8 @@ class App extends React.Component {
             <Route exact path="/" render={(props) => <Landing {...props} logged_in={ logged_in } sign_up_route={ sign_up_route }/> }/>
             <Route path="/new-application" render={(props) => <NewApplication {...props} current_user={ current_user } csrf_token={ csrf_token }/> }/>
             <Route path="/edit-application/:id" render={(props) => <EditApplication {...props} csrf_token={ csrf_token }/> }/>
-            <Route path="/delete-application/:id" render= {(props) => <DeleteApplication {...props} csrf_token={ csrf_token }/> }/>
             <Route path="/about" component={ About }/>
-            <Route path="/dashboard" render= {(props) => <NewDash {...props} current_user={ current_user }/> }/>
+            <Route path="/dashboard" render= {(props) => <NewDash {...props} csrf_token={ csrf_token } current_user={ current_user }/> }/>
           </Switch>
         </Router>
       </React.Fragment>

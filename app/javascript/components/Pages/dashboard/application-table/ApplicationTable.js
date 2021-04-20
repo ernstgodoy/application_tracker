@@ -1,15 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { Table, Button } from "react-bootstrap"
 //icons
 import { faEdit, faTrash } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const ApplicationTable = (props) => {
-  const [data, setData] = useState([])
-  
-  useEffect(() => {
-    setData(props.data)
-  }, [])
+  const { data, openModal } = props
 
   return (
     <React.Fragment>
@@ -42,9 +38,9 @@ const ApplicationTable = (props) => {
                 <td>{ date_applied }</td>
                 <td>{ last_follow_up }</td>
                 <td>
-                  <Button id="edit-button-test" href={`/edit-application/${id}`} variant="success" size="sm"><FontAwesomeIcon icon={faEdit} size="xs" /></Button>
+                  <Button id="edit-button-test" href={`/edit-application/${id}`} variant="success" size="sm"><FontAwesomeIcon icon={ faEdit } size="xs" /></Button>
                   &nbsp;
-                  <Button id="delete-button-test" href={ `/delete-application/${id}` } size="sm"><FontAwesomeIcon icon={faTrash} size="xs" /></Button>
+                  <Button id="delete-button-test" onClick={ () => openModal(id) } size="sm"><FontAwesomeIcon icon={ faTrash } size="xs" /></Button>
                 </td>
               </tr>
             )
