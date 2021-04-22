@@ -1,11 +1,30 @@
 import React from 'react';
-import { Table, Button } from "react-bootstrap"
+import { Table, Button, Pagination } from "react-bootstrap"
 //icons
 import { faEdit, faTrash } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import "./application-table.scss"
 
 const ApplicationTable = (props) => {
-  const { data, openModal } = props
+
+  const { 
+    data, 
+    openModal, 
+    current_page, 
+    total_pages,
+    paginate
+  } = props
+
+  const paginationDisable = (dir) => {
+    switch (dir) {
+      case "prev":
+        return current_page === 1 ? true : false
+        break;
+      case "next":
+        return current_page === total_pages ? true : false
+        break;
+    }
+  }
 
   return (
     <React.Fragment>
@@ -47,6 +66,13 @@ const ApplicationTable = (props) => {
           })}
         </tbody>
       </Table>
+      <Pagination className="paginator">
+        <div className="pages">
+          Page: { current_page } of { total_pages }
+        </div>
+        <Pagination.Prev onClick={ () => paginate(current_page - 1) } disabled={ paginationDisable("prev") } />
+        <Pagination.Next onClick={ () => paginate(current_page + 1) } disabled={ paginationDisable("next") } />
+      </Pagination>
       { data.length === 0 && 
         <div className="no-data">
           No Applications To Track
