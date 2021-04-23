@@ -5,34 +5,45 @@ describe "Jobs", type: :request do
     @user1 = User.create!(email: "test1@mail.com", password: "password", password_confirmation: "password")
     @user2 = User.create!(email: "test2@mail.com", password: "password", password_confirmation: "password")
     sign_in @user1
-    Job.create!(user_id: @user2.id, company: 'Company 3', role: 'Software Engineer', status: 'phase 1', date_applied: '2000-10-01', last_follow_up: '2000-10-09')
-    Job.create!(user_id: @user1.id, company: 'Company 1', role: 'Software Engineer', status: 'just applied', date_applied: '2000-10-06', last_follow_up: '2000-10-09')
-    Job.create!(user_id: @user1.id, company: 'Company 2', role: 'Frontend Engineer', status: 'phase 1', date_applied: '2000-10-01', last_follow_up: '2000-10-09')
-    Job.create!(user_id: @user1.id, company: 'Company 3', role: 'Software Engineer', status: 'phase 1', date_applied: '2000-10-01', last_follow_up: '2000-10-09')
-
+    Job.create!([
+      { user_id: @user2.id, company: 'Company 1', role: 'Software Engineer', status: 'phase 1', date_applied: '2000-10-01', last_follow_up: '2000-10-09' },
+      { user_id: @user1.id, company: 'Company 1', role: 'Software Engineer', status: 'just applied', date_applied: '2000-10-06', last_follow_up: '2000-10-09' },
+      { user_id: @user1.id, company: 'Company 2', role: 'Frontend Engineer', status: 'phase 1', date_applied: '2000-10-01', last_follow_up: '2000-10-09' },
+      { user_id: @user1.id, company: 'Company 3', role: 'Software Engineer', status: 'phase 1', date_applied: '2000-10-01', last_follow_up: '2000-10-09' },
+    ])
     @jobs = Job.all
   end
 
   describe "Get Method" do
-    it "gets a list of jobs" do
+    it "gets a list of jobs with pagination" do
       get "/jobs"
       json = JSON.parse(response.body)
       expect(response).to have_http_status(:ok)
-      expect(json.length).to eq 3
+      expect(json.keys).to contain_exactly('jobs', 'per_page', 'total_pages', 'total_jobs', 'current_page' )
+      expect(json["jobs"].length).to eq 3
     end
 
     it "gets a list of jobs filtered by role" do
       get "/jobs", params: { role: "Software Engineer" }
       json = JSON.parse(response.body)
-      expect(json.length).to eq 2
+      expect(json["jobs"].length).to eq 2
     end
 
     it "gets a list of jobs filtered by status" do
       get "/jobs", params: { status: "phase 1" }
       json = JSON.parse(response.body)
-      expect(json.length).to eq 2
+      expect(json["jobs"].length).to eq 2
     end
   end
+
+  # describe "Show Method" do
+  #   it "gets a job by id" do
+  #     @id = Job.last.id
+  #     show "/jobs", params: @id
+  #     json = JSON.parse(response.body)
+  #     puts json
+  #   end
+  # end
 
   describe "Post Method" do
     it "creates a job" do
