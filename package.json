@@ -32,7 +32,7 @@
   "jest": {
     "rootDir": "app/javascript",
     "moduleNameMapper": {
-      "\\.(jpg|png)$": "identity-obj-proxy"
+      "\\.(jpg|png|scss)$": "identity-obj-proxy"
     }
   }
 }

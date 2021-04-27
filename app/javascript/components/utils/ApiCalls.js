@@ -63,7 +63,7 @@ export const getDashboardData = (page) => {
     fetch(url).then(res => res.json()),
     fetch("/roles_count").then(res => res.json()),
     fetch("/status_metrics").then(res => res.json())
-  ])
+  ].map(p => p.catch(err => err)))
   .then(([jobs, roles, statuses]) => {
     let response = new Object({
       jobs: jobs,
@@ -72,5 +72,4 @@ export const getDashboardData = (page) => {
     })
     return response
   })
-  .catch(err => err)
 }

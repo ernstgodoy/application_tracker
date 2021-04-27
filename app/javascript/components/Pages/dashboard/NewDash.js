@@ -14,9 +14,9 @@ class NewDash extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      pieData: [],
+      pieData: {},
       tableData: [],
-      metricsData: [],
+      metricsData: {},
       dataLoaded: false,
       fullName: `${this.props.current_user.first_name} ${this.props.current_user.last_name}`,
       jobTitle: `${this.props.current_user.job_title}`,
@@ -99,7 +99,7 @@ class NewDash extends Component {
                 <h5>Status Metrics</h5>
               </div>
               { dataLoaded && 
-                <ApplicationMetrics data={ metricsData} />
+                <ApplicationMetrics data={ metricsData } />
               }
             </div>
             <div className="right-content">

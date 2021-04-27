@@ -7,8 +7,6 @@ Enzyme.configure({adapter: new Adapter()})
 
 describe('Delete Modal Component', () => {
   let component, props;
-  let something = { }
-  global.fetch = jest.fn(() => Promise.resolve(something))
 
   beforeEach(() => {
     props = {
