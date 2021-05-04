@@ -7,34 +7,39 @@ import Pie from './pie-chart/Pie';
 import ApplicationMetrics from './application-metrics/ApplicationMetrics'
 import DeleteModal from './delete-modal/DeleteModal'
 
-import { getMetrics } from '../../utils/ApiCalls';
+import { getDashboardData } from '../../utils/ApiCalls';
 
 
 class NewDash extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      pieData: [],
+      pieData: {},
       tableData: [],
-      metricsData: [],
+      metricsData: {},
       dataLoaded: false,
       fullName: `${this.props.current_user.first_name} ${this.props.current_user.last_name}`,
       jobTitle: `${this.props.current_user.job_title}`,
+      current_page: undefined,
+      total_pages: undefined,
       modalShow: false,
       tempId: undefined,
     }
   }
 
   componentDidMount() {
-    this.getData()
+    this.getData(this.state.current_page)
   }
 
-  getData = () => {
-    getMetrics().then(res => {
+  getData = (page) => {
+    getDashboardData(page).then(res => {
+      const { jobs, roles_count, status_count } = res
       this.setState({
-        pieData: res.roles_count,
-        tableData: res.jobs,
-        metricsData: res.status_count,
+        pieData: roles_count,
+        tableData: jobs.jobs,
+        metricsData: status_count,
+        current_page: jobs.current_page,
+        total_pages: jobs.total_pages
       })
 
       if (!this.state.dataLoaded) {
@@ -43,6 +48,14 @@ class NewDash extends Component {
         })
       }
     })
+  }
+
+  paginate = (page) => {
+    this.setState({
+      current_page: page
+    })
+    
+    this.getData(page)
   }
 
   openModal = (id) => {
@@ -68,6 +81,8 @@ class NewDash extends Component {
       metricsData,
       tempId,
       modalShow,
+      current_page,
+      total_pages,
     } = this.state
 
     const {
@@ -84,7 +99,7 @@ class NewDash extends Component {
                 <h5>Status Metrics</h5>
               </div>
               { dataLoaded && 
-                <ApplicationMetrics data={ metricsData} />
+                <ApplicationMetrics data={ metricsData } />
               }
             </div>
             <div className="right-content">
@@ -103,7 +118,13 @@ class NewDash extends Component {
                 <a href="/new-application"><FontAwesomeIcon icon={faPlusCircle}/></a>
               </div>
               { dataLoaded && 
-                <ApplicationTable openModal={ (id) => this.openModal(id) } data={ tableData } />
+                <ApplicationTable 
+                  openModal={ (id) => this.openModal(id) } 
+                  data={ tableData } 
+                  current_page={ current_page }
+                  total_pages={ total_pages }
+                  paginate={(page) => this.paginate(page)}
+                />
               }
             </div>
           </div>

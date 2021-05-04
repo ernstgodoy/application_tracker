@@ -52,12 +52,18 @@ export const putRequest = (id, app, token) => {
     .catch(err => err)
 }
 
-export const getMetrics = () => {
+export const getDashboardData = (page) => {
+  let url = '/jobs'
+
+  if (page) {
+    url += `?page=${ page }`
+  }
+
   return Promise.all([
-    fetch("/jobs").then(res => res.json()),
+    fetch(url).then(res => res.json()),
     fetch("/roles_count").then(res => res.json()),
     fetch("/status_metrics").then(res => res.json())
-  ])
+  ].map(p => p.catch(err => err)))
   .then(([jobs, roles, statuses]) => {
     let response = new Object({
       jobs: jobs,
@@ -66,5 +72,4 @@ export const getMetrics = () => {
     })
     return response
   })
-  .catch(err => err)
 }

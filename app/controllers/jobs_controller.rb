@@ -1,10 +1,21 @@
 class JobsController < ApplicationController
 
   def index
-    @jobs = current_user.jobs
+    @jobs_payload = Hash.new
+    @per_page = params[:per_page] || 10
+    @current_page = params[:page] || 1
+
+    @jobs = current_user.jobs.paginate(page: @current_page, per_page: @per_page)
     @jobs = @jobs.filter_by_role(params[:role]) if params[:role].present?
     @jobs = @jobs.filter_by_status(params[:status]) if params[:status].present?
-    render json: @jobs
+
+    @jobs_payload[:per_page] = @per_page.to_i
+    @jobs_payload[:current_page] = @current_page.to_i
+    @jobs_payload[:total_pages] = (current_user.jobs.length/@per_page.to_i.to_f).ceil()
+    @jobs_payload[:total_jobs] = current_user.jobs.length
+    @jobs_payload[:jobs] = @jobs
+
+    render json: @jobs_payload
   end 
 
   def show

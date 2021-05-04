@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<coverage generated="1619563637390" clover="3.2.0">
+  <project timestamp="1619563637391" name="All files">
+    <metrics statements="101" coveredstatements="57" conditionals="26" coveredconditionals="20" methods="55" coveredmethods="20" elements="182" coveredelements="97" complexity="0" loc="101" ncloc="101" packages="6" files="6" classes="6"/>
+    <package name="Pages.dashboard">
+      <metrics statements="24" coveredstatements="15" conditionals="8" coveredconditionals="8" methods="12" coveredmethods="5"/>
+      <file name="NewDash.js" path="/Users/ernesto/Desktop/mystuff/job_application_tracker/app/javascript/components/Pages/dashboard/NewDash.js">
+        <metrics statements="24" coveredstatements="15" conditionals="8" coveredconditionals="8" methods="12" coveredmethods="5"/>
+        <line num="15" count="4" type="stmt"/>
+        <line num="16" count="4" type="stmt"/>
+        <line num="31" count="5" type="stmt"/>
+        <line num="34" count="4" type="stmt"/>
+        <line num="35" count="5" type="stmt"/>
+        <line num="36" count="5" type="stmt"/>
+        <line num="37" count="5" type="stmt"/>
+        <line num="45" count="5" type="cond" truecount="2" falsecount="0"/>
+        <line num="46" count="4" type="stmt"/>
+        <line num="53" count="4" type="stmt"/>
+        <line num="54" count="0" type="stmt"/>
+        <line num="58" count="0" type="stmt"/>
+        <line num="61" count="4" type="stmt"/>
+        <line num="62" count="0" type="stmt"/>
+        <line num="68" count="4" type="stmt"/>
+        <line num="69" count="0" type="stmt"/>
+        <line num="73" count="0" type="stmt"/>
+        <line num="86" count="13" type="stmt"/>
+        <line num="90" count="13" type="stmt"/>
+        <line num="92" count="13" type="stmt"/>
+        <line num="122" count="0" type="stmt"/>
+        <line num="126" count="0" type="stmt"/>
+        <line num="135" count="0" type="stmt"/>
+        <line num="136" count="0" type="stmt"/>
+      </file>
+    </package>
+    <package name="Pages.dashboard.application-metrics">
+      <metrics statements="6" coveredstatements="6" conditionals="2" coveredconditionals="2" methods="3" coveredmethods="3"/>
+      <file name="ApplicationMetrics.js" path="/Users/ernesto/Desktop/mystuff/job_application_tracker/app/javascript/components/Pages/dashboard/application-metrics/ApplicationMetrics.js">
+        <metrics statements="6" coveredstatements="6" conditionals="2" coveredconditionals="2" methods="3" coveredmethods="3"/>
+        <line num="3" count="2" type="stmt"/>
+        <line num="4" count="3" type="stmt"/>
+        <line num="6" count="3" type="stmt"/>
+        <line num="7" count="5" type="cond" truecount="2" falsecount="0"/>
+        <line num="10" count="3" type="stmt"/>
+        <line num="15" count="2" type="stmt"/>
+      </file>
+    </package>
+    <package name="Pages.dashboard.application-table">
+      <metrics statements="14" coveredstatements="9" conditionals="8" coveredconditionals="6" methods="6" coveredmethods="3"/>
+      <file name="ApplicationTable.js" path="/Users/ernesto/Desktop/mystuff/job_application_tracker/app/javascript/components/Pages/dashboard/application-table/ApplicationTable.js">
+        <metrics statements="14" coveredstatements="9" conditionals="8" coveredconditionals="6" methods="6" coveredmethods="3"/>
+        <line num="8" count="2" type="stmt"/>
+        <line num="16" count="5" type="stmt"/>
+        <line num="18" count="5" type="stmt"/>
+        <line num="19" count="10" type="cond" truecount="2" falsecount="0"/>
+        <line num="21" count="5" type="cond" truecount="1" falsecount="1"/>
+        <line num="22" count="0" type="stmt"/>
+        <line num="24" count="5" type="cond" truecount="1" falsecount="1"/>
+        <line num="25" count="0" type="stmt"/>
+        <line num="29" count="5" type="stmt"/>
+        <line num="51" count="4" type="stmt"/>
+        <line num="52" count="4" type="stmt"/>
+        <line num="62" count="0" type="stmt"/>
+        <line num="73" count="0" type="stmt"/>
+        <line num="74" count="0" type="stmt"/>
+      </file>
+    </package>
+    <package name="Pages.dashboard.delete-modal">
+      <metrics statements="12" coveredstatements="5" conditionals="6" coveredconditionals="3" methods="6" coveredmethods="1"/>
+      <file name="DeleteModal.js" path="/Users/ernesto/Desktop/mystuff/job_application_tracker/app/javascript/components/Pages/dashboard/delete-modal/DeleteModal.js">
+        <metrics statements="12" coveredstatements="5" conditionals="6" coveredconditionals="3" methods="6" coveredmethods="1"/>
+        <line num="6" count="2" type="stmt"/>
+        <line num="7" count="2" type="stmt"/>
+        <line num="8" count="2" type="stmt"/>
+        <line num="10" count="2" type="stmt"/>
+        <line num="11" count="0" type="stmt"/>
+        <line num="13" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="14" count="0" type="stmt"/>
+        <line num="15" count="0" type="stmt"/>
+        <line num="16" count="0" type="stmt"/>
+        <line num="22" count="2" type="stmt"/>
+        <line num="48" count="0" type="stmt"/>
+        <line num="49" count="0" type="stmt"/>
+      </file>
+    </package>
+    <package name="Pages.dashboard.pie-chart">
+      <metrics statements="14" coveredstatements="7" conditionals="0" coveredconditionals="0" methods="6" coveredmethods="1"/>
+      <file name="Pie.js" path="/Users/ernesto/Desktop/mystuff/job_application_tracker/app/javascript/components/Pages/dashboard/pie-chart/Pie.js">
+        <metrics statements="14" coveredstatements="7" conditionals="0" coveredconditionals="0" methods="6" coveredmethods="1"/>
+        <line num="5" count="2" type="stmt"/>
+        <line num="7" count="2" type="stmt"/>
+        <line num="8" count="1" type="stmt"/>
+        <line num="10" count="1" type="stmt"/>
+        <line num="11" count="0" type="stmt"/>
+        <line num="14" count="1" type="stmt"/>
+        <line num="15" count="0" type="stmt"/>
+        <line num="30" count="0" type="stmt"/>
+        <line num="51" count="1" type="stmt"/>
+        <line num="52" count="0" type="stmt"/>
+        <line num="53" count="0" type="stmt"/>
+        <line num="54" count="0" type="stmt"/>
+        <line num="56" count="0" type="stmt"/>
+        <line num="59" count="1" type="stmt"/>
+      </file>
+    </package>
+    <package name="utils">
+      <metrics statements="31" coveredstatements="15" conditionals="2" coveredconditionals="1" methods="22" coveredmethods="7"/>
+      <file name="ApiCalls.js" path="/Users/ernesto/Desktop/mystuff/job_application_tracker/app/javascript/components/utils/ApiCalls.js">
+        <metrics statements="31" coveredstatements="15" conditionals="2" coveredconditionals="1" methods="22" coveredmethods="7"/>
+        <line num="1" count="2" type="stmt"/>
+        <line num="2" count="0" type="stmt"/>
+        <line num="5" count="0" type="stmt"/>
+        <line num="6" count="0" type="stmt"/>
+        <line num="9" count="2" type="stmt"/>
+        <line num="10" count="0" type="stmt"/>
+        <line num="13" count="0" type="stmt"/>
+        <line num="14" count="0" type="stmt"/>
+        <line num="17" count="2" type="stmt"/>
+        <line num="18" count="0" type="stmt"/>
+        <line num="26" count="0" type="stmt"/>
+        <line num="27" count="0" type="stmt"/>
+        <line num="30" count="2" type="stmt"/>
+        <line num="31" count="0" type="stmt"/>
+        <line num="38" count="0" type="stmt"/>
+        <line num="39" count="0" type="stmt"/>
+        <line num="42" count="2" type="stmt"/>
+        <line num="43" count="0" type="stmt"/>
+        <line num="51" count="0" type="stmt"/>
+        <line num="52" count="0" type="stmt"/>
+        <line num="55" count="2" type="stmt"/>
+        <line num="56" count="5" type="stmt"/>
+        <line num="58" count="5" type="cond" truecount="1" falsecount="1"/>
+        <line num="59" count="0" type="stmt"/>
+        <line num="62" count="5" type="stmt"/>
+        <line num="63" count="5" type="stmt"/>
+        <line num="64" count="5" type="stmt"/>
+        <line num="65" count="5" type="stmt"/>
+        <line num="66" count="15" type="stmt"/>
+        <line num="68" count="5" type="stmt"/>
+        <line num="73" count="5" type="stmt"/>
+      </file>
+    </package>
+  </project>
+</coverage>

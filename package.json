@@ -30,9 +30,10 @@
     "webpack-dev-server": "^3.11.0"
   },
   "jest": {
+    "collectCoverage": true,
     "rootDir": "app/javascript",
     "moduleNameMapper": {
-      "\\.(jpg|png)$": "identity-obj-proxy"
+      "\\.(jpg|png|scss)$": "identity-obj-proxy"
     }
   }
 }
