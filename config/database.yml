@@ -75,11 +75,11 @@ test:
 #
 # You can use this database configuration with:
 #
-#   production:
-#     url: <%= ENV['DATABASE_URL'] %>
-#
 production:
-  <<: *default
-  database: job_application_tracker_production
-  username: job_application_tracker
-  password: <%= ENV['JOB_APPLICATION_TRACKER_DATABASE_PASSWORD'] %>
+  url: <%= ENV['DATABASE_URL'] %>
+
+# production:
+#   <<: *default
+#   database: job_application_tracker_production
+#   username: job_application_tracker
+#   password: <%= ENV['JOB_APPLICATION_TRACKER_DATABASE_PASSWORD'] %>
