@@ -4,6 +4,12 @@
 
 https://app-track-r.herokuapp.com
 
+Test Account: 
+``` bash
+email: test1@mail.com
+password: TestPassword1!
+```
+
 ## Installation 
 
 Clone repository
